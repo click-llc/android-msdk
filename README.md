@@ -14,7 +14,7 @@ repositories {
 
 }
 dependencies {
-
+	implementation 'uz.click.mobilesdk:clickmsdk:${last.version}'
 }
 
 ```
