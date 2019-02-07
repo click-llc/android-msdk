@@ -10,9 +10,7 @@
 Для подключения библиотеки пропишите зависимости в build.gradle модуля:
 
 ```groovy
-repositories {
 
-}
 dependencies {
 	implementation 'uz.click.mobilesdk:clickmsdk:${last.version}'
 }
