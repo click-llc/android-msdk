@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#3fc6fc</color>
+
+    <color name="colorPrimaryDarkGray">#303F9F</color>
+
+    <color name="colorLightGrayDivider">#e4e4e4</color>
+    <color name="buttonPrimaryDisabled">#ffe1e1e1</color>
+    <color name="buttonPrimaryEnabled">@color/colorAccent</color>
+    <color name="buttonPrimaryPressed">#fffee380</color>
+
+    <color name="textColor">#000000</color>
+    <color name="textColorGrayLight">#b4b4b4</color>
+    <color name="textColorGray">#99000000</color>
+    <color name="white">#ffffff</color>
+    <color name="palette_accent">#0081df</color>
+</resources>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/llPaymentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorMainText"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#e4e4e4" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/pbLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:theme="@style/cl_ProgressBar"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="16dp"
+                    android:visibility="invisible" />
+
+                <LinearLayout
+                    android:id="@+id/llBottomContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/llChange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:id="@+id/ivPaymentType"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_880" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvPaymentTypeTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/invoicing"
+                                android:textColor="@color/colorMainText"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvPaymentTypeSubtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/sms_confirmation"
+                                android:textColor="@color/colorSecondaryText"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/btnChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/change"
+                            android:textColor="@color/colorPrimaryAccent"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llUssd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvPrefix"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="@android:color/transparent"
+                                android:lines="1"
+                                android:text="+998"
+                                android:textColor="@color/colorMainText"
+                                android:textSize="18dp" />
+
+                            <EditText
+                                android:id="@+id/etMobileNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@android:color/transparent"
+                                android:hint="90 980 08 80"
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLength="17"
+                                android:textColor="@color/colorMainText"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/viewMobileNumberUnderline"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@drawable/underline_background" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llBankCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/etCardNumber"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:hint="8600 1400 8800 7212"
+                                android:inputType="number"
+                                android:maxLength="19"
+                                android:textColor="@color/colorMainText"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/ivScanner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="8dp"
+                                android:src="@drawable/ic_card" />
+
+                        </LinearLayout>
+
+
+                        <EditText
+                            android:id="@+id/etCardDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:hint="09/20"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:textColor="@color/colorMainText"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/tvToPay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/payment"
+                            android:textColor="@color/colorSecondaryText"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvSum"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="12,000"
+                            android:textColor="@color/colorMainText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvAbbr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:gravity="right"
+                            android:text="@string/abbr"
+                            android:textColor="@color/colorMainText"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvError"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/colorError"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/btnNext"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/next_button_rounded">
+
+                        <TextView
+                            android:id="@+id/tvNext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="@string/next"
+                            android:textColor="#fff"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="300dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivError"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_failure" />
+
+            <TextView
+                android:id="@+id/tvErrorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="@string/connection_problem"
+                android:textAlignment="center"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tvRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/retry"
+                android:textColor="@color/colorPrimaryAccent"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

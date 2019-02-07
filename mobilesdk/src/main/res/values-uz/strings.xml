@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="invoicing">Hisob qo\'yish</string>
+    <string name="bank_card">Bank kartasi</string>
+    <string name="sms_confirmation">Ushbu raqamga hisob yuboriladi</string>
+    <string name="card_props">Bank kartasi ma\'lumotlarini kiriting</string>
+    <string name="confirm_with_sms">SMS kod orqali tasdiqlang</string>
+    <string name="sms_code_sent">Sizning telefon raqamingizga SMS yuborildi, iltimos to\'lovni tasdiqlash uchun kodni kiritng</string>
+    <string name="owner_mobile_number">Karta egasi telefon raqami</string>
+    <string name="sms_code">SMS kod</string>
+    <string name="next">Davom etish</string>
+    <string name="payment_types">To\'lov turi</string>
+    <string name="waiting_confirmation">Tasdiqlash kutilmoqda</string>
+    <string name="invoice_placed">Sizning telefon raqamizga hisob ochildi, to\'lov muvaffaqiyatli o\'tishi uchun tasdiqlang</string>
+    <string name="ways_to_confirm">Tasdiqlash turi</string>
+    <string name="call_ussd">*880# raqamiga telefon qiling</string>
+    <string name="click_bot_sent_code">Click bot sizga hisob yubordi</string>
+    <string name="click_app">Click ilovsi</string>
+    <string name="enter_invoices_list">Выставленные счета bo\'limiga kiring</string>
+    <string name="cancel">Bekor qilish</string>
+    <string name="payment">To\'lov uchun</string>
+    <string name="abbr">so\'m</string>
+    <string name="paid">To\'landi</string>
+    <string name="to_be_paid">To\'lo\'vga</string>
+    <string name="success_payment">Ushbu to\'lov muvaffaqiyatli amalga oshirildi</string>
+    <string name="failure_payment">To\'lov amalga oshmadi</string>
+    <string name="payment_number">To\'lov raqami</string>
+    <string name="close">Yopish</string>
+    <string name="enter_code">Kodni kiriting</string>
+    <string name="enter_valid_phone_number">Telefon raqamini kiriting</string>
+    <string name="enter_card_number">Bank kartasi raqamini kiriting</string>
+    <string name="enter_expire_date">Tugash sanasini kiriting</string>
+    <string name="change">o\'zgartirish</string>
+    <string name="connection_problem">Internet bilan bog\'liq muammo. Onlaynda bo\'lganingizda qaytadan urinib ko\'ring</string>
+    <string name="retry">Qayta urinib ko\'ring</string>
+    <string name="service_id_error">Sotuvchi id raqami noto\'g\'ri</string>
+    <string name="amount_error">Minimal pul miqdori 10.0 dan kam bo\'lishi kerak emas</string>
+    <string name="request_id_error">O\'tkazma topilmadi. Qayta urinib ko\'ring</string>
+    <string name="server_error">Serverda xatolik yuz berdi</string>
+    <string name="unknown_error">Noma\'lum xatolik</string>
+    <string name="network_connection_error">Internetga ulanish muvaffaqiyatsiz tugadi</string>
+    <string name="card_number_error">Noto\'g\'ri karta raqami yoki SMS xizmati ulanmagan</string>
+    <string name="payment_failed">Hisob rad etildi</string>
+    <string name="payment_success">Muvaffaqiyatli tasdiqlandi</string>
+    <string name="max_amount_error">Siz kunlik maksimal to\'lov chegarasidan oshdingiz</string>
+</resources>

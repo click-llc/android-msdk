@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimarySdk">@color/colorPrimaryAccent</color>
+    <color name="colorPrimaryDarkSdk">@color/colorPrimaryAccent</color>
+    <color name="colorAccentSdk">@color/colorPrimaryAccent</color>
+    <color name="cl_background">#f7f7f7</color>
+    <color name="colorPrimaryAccent">#3fc6fc</color>
+    <color name="colorError">#F44336</color>
+    <color name="colorMainText">#252525</color>
+    <color name="colorSecondaryText">#7f7f7f</color>
+
+    <color name="colorSheetBackground">#f7f7f7</color>
+
+    <color name="colorButtonDisabled">#e1e1e1</color>
+    <color name="colorButtonEnabled">@color/colorPrimaryAccent</color>
+    <color name="colorButtonPressed">#53ceff</color>
+</resources>

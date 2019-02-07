@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="invoicing">Выставление счета</string>
+    <string name="bank_card">Банковская карта</string>
+    <string name="sms_confirmation">На ваш номер придет подтверждение</string>
+    <string name="card_props">Введите реквизиты карты</string>
+    <string name="confirm_with_sms">Подтвердите СМС кодом</string>
+    <string name="sms_code_sent">На ваш номер отправлен СМС, пожалуйста для подтверждения оплаты введите код</string>
+    <string name="owner_mobile_number">Номер владельца карты</string>
+    <string name="sms_code">СМС код</string>
+    <string name="next">Продолжить</string>
+    <string name="payment_types">Способ оплаты</string>
+    <string name="waiting_confirmation">Ожидание подтверждения</string>
+    <string name="invoice_placed">На ваш номер отправлен счет, пожалуйста подтвердите для успешной оплаты</string>
+    <string name="ways_to_confirm">Способы подтверждения</string>
+    <string name="call_ussd">Позвоните на номер *880#</string>
+    <string name="click_bot_sent_code">Click бот отправил вам счет</string>
+    <string name="click_app">Приложение Click</string>
+    <string name="enter_invoices_list">Зайдите в раздел Выставленные счета</string>
+    <string name="cancel">Отмена</string>
+    <string name="payment">К оплате</string>
+    <string name="abbr">сум</string>
+    <string name="paid">Оплачено</string>
+    <string name="to_be_paid">К оплате</string>
+    <string name="success_payment">Данный платеж успешно оплачен</string>
+    <string name="failure_payment">Платеж не выполнен</string>
+    <string name="payment_number">Номер оплаты</string>
+    <string name="close">Закрыт</string>
+    <string name="enter_code">Введите код</string>
+    <string name="enter_valid_phone_number">Введите номер телефона указанном формате</string>
+    <string name="enter_card_number">Введите номер платежной карты</string>
+    <string name="enter_expire_date">Введите дату</string>
+    <string name="change">изменить</string>
+    <string name="connection_problem">Проблема с интернетом. Попробуйте еще раз, когда будете онлайн</string>
+    <string name="retry">Попробовать еще раз</string>
+    <string name="service_id_error">Не верно указан идентификатор поставщика</string>
+    <string name="amount_error">Минимальная сумма не должна быть меньше 10.0</string>
+    <string name="request_id_error">Транзакция не найдена. Повторите попытку</string>
+    <string name="server_error">Ошибка сервера</string>
+    <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="network_connection_error">Не удалось подключиться к интернету</string>
+    <string name="card_number_error">Неверный номер карты или смс услуга не подключена</string>
+    <string name="payment_failed">Счет отлонен</string>
+    <string name="payment_success">Успешно подтвержден</string>
+    <string name="max_amount_error">Вы превысили максимальный лимит оплаты в день</string>
+</resources>

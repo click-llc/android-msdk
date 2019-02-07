@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="invoicing">Invoicing</string>
+    <string name="bank_card">Bank card</string>
+    <string name="sms_confirmation">A confirmation will be sent to your number</string>
+    <string name="card_props">Enter card details</string>
+    <string name="confirm_with_sms">Confirm by SMS code</string>
+    <string name="sms_code_sent">An SMS has been sent to your number, please enter the code to confirm the payment</string>
+    <string name="owner_mobile_number">Card holder number</string>
+    <string name="sms_code">SMS code</string>
+    <string name="next">Next</string>
+    <string name="payment_types">Payment method</string>
+    <string name="waiting_confirmation">Waiting for confirmation</string>
+    <string name="invoice_placed">An invoice has been sent to your number, please confirm for successful payment.</string>
+    <string name="ways_to_confirm">Confirmation methods</string>
+    <string name="call_ussd">Call *880#</string>
+    <string name="click_bot_sent_code">Click sent you an invoice</string>
+    <string name="click_app">Click application</string>
+    <string name="enter_invoices_list">Go to the section "Invoiced"</string>
+    <string name="cancel">Cancel</string>
+    <string name="payment">To pay</string>
+    <string name="abbr">uzs</string>
+    <string name="paid">Paid</string>
+    <string name="to_be_paid">To be paid</string>
+    <string name="success_payment">This payment was successfully paid</string>
+    <string name="failure_payment">Payment failed</string>
+    <string name="payment_number">Payment number</string>
+    <string name="close">Close</string>
+    <string name="enter_code">Enter code</string>
+    <string name="enter_valid_phone_number">Enter valid phone number</string>
+    <string name="enter_card_number">Enter bank card number</string>
+    <string name="enter_expire_date">Enter expiry date</string>
+    <string name="change">change</string>
+    <string name="connection_problem">Problem with internet connection. Try again when you are online</string>
+    <string name="retry">Retry again</string>
+    <string name="service_id_error">Invalid service  id</string>
+    <string name="amount_error">The minimum amount should not be less than 10.0</string>
+    <string name="request_id_error">Transaction not found. Try again</string>
+    <string name="server_error">Server issue</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="network_connection_error">Internet connection failed</string>
+    <string name="card_number_error">Invalid card number or SMS service is not connected</string>
+    <string name="payment_failed">Invoice rejected</string>
+    <string name="payment_success">Successfully confirmed</string>
+    <string name="max_amount_error">You have exceeded the maximum payment limit per day</string>
+</resources>
