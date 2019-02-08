@@ -43,4 +43,6 @@
     <string name="payment_failed">Invoice rejected</string>
     <string name="payment_success">Successfully confirmed</string>
     <string name="max_amount_error">You have exceeded the maximum payment limit per day</string>
+    <string name="confirmation_code_error">Invalid sms code</string>
+    <string name="number_of_attempts_error">Number of attempts to enter SMS verification code exceeded</string>
 </resources>

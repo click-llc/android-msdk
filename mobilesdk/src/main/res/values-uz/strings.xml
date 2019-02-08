@@ -43,4 +43,6 @@
     <string name="payment_failed">Hisob rad etildi</string>
     <string name="payment_success">Muvaffaqiyatli tasdiqlandi</string>
     <string name="max_amount_error">Siz kunlik maksimal to\'lov chegarasidan oshdingiz</string>
+    <string name="confirmation_code_error">Sms kod no\'g\'ri</string>
+    <string name="number_of_attempts_error">SMS-tekshirish kodini kiritish bo\'yicha urinishlar soni oshib ketdi</string>
 </resources>

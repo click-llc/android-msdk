@@ -28,7 +28,9 @@ object ErrorUtils {
             is MaximalAmountRangeException -> true
             is IncorrectCardNumberException -> true
             is InvalidRequestIdException -> true
+            is InvalidConfirmationCodeException -> true
             is UnknownErrorException -> true
+            is NumberOfAttemptsException -> true
             else -> false
         }
     }
@@ -53,6 +55,12 @@ object ErrorUtils {
             is ServerErrorException -> {
                 LanguageUtils.getLocaleStringResource(locale, R.string.server_error, context)
             }
+            is InvalidConfirmationCodeException -> {
+                LanguageUtils.getLocaleStringResource(locale, R.string.confirmation_code_error, context)
+            }
+            is NumberOfAttemptsException -> {
+                LanguageUtils.getLocaleStringResource(locale, R.string.number_of_attempts_error, context)
+            }
             else -> {
                 LanguageUtils.getLocaleStringResource(locale, R.string.unknown_error, context)
             }
@@ -70,11 +78,17 @@ object ErrorUtils {
             7 -> {
                 MaximalAmountRangeException(code, message)
             }
+            -302 -> {
+                InvalidConfirmationCodeException(code, message)
+            }
             -400 -> {
                 IncorrectCardNumberException(code, message)
             }
             -403 -> {
                 InvalidRequestIdException(code, message)
+            }
+            -406 -> {
+                NumberOfAttemptsException(code, message)
             }
             -500 -> {
                 ServerErrorException(code, message)

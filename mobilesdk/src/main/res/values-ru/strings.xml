@@ -43,4 +43,6 @@
     <string name="payment_failed">Счет отлонен</string>
     <string name="payment_success">Успешно подтвержден</string>
     <string name="max_amount_error">Вы превысили максимальный лимит оплаты в день</string>
+    <string name="confirmation_code_error">Неверный смс код</string>
+    <string name="number_of_attempts_error">Превышено количество попыток ввода смс-кода подтверждения</string>
 </resources>

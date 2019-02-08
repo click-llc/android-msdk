@@ -18,8 +18,12 @@ import uz.click.mobilesdk.core.data.PaymentResponse
 import uz.click.mobilesdk.core.errors.ArgumentEmptyException
 import uz.click.mobilesdk.impl.MainDialogFragment.Companion.LOCALE
 import uz.click.mobilesdk.impl.MainDialogFragment.Companion.REQUEST_ID
+import uz.click.mobilesdk.utils.ErrorUtils
 import uz.click.mobilesdk.utils.LanguageUtils
+import uz.click.mobilesdk.utils.hide
 import uz.click.mobilesdk.utils.hideKeyboard
+import uz.click.mobilesdk.utils.invisible
+import uz.click.mobilesdk.utils.show
 import java.util.*
 
 /**
@@ -35,9 +39,11 @@ class PaymentConfirmationFragment : AppCompatDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_confirm_payment, container, false)
     }
+
     init {
         setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -77,15 +83,19 @@ class PaymentConfirmationFragment : AppCompatDialogFragment() {
         if (etCode.text.toString().isEmpty()) {
             etCode.error = LanguageUtils.getLocaleStringResource(locale, R.string.enter_code, context!!)
         } else {
+            showLoading()
             clickMerchantManager.confirmPaymentByCard(
                 requestId!!,
                 etCode.text.toString(),
                 object : ResponseListener<ConfirmPaymentByCardResponse> {
                     override fun onFailure(e: Exception) {
                         e.printStackTrace()
+                        showError()
+                        showErrorMessage(e)
                     }
 
                     override fun onSuccess(response: ConfirmPaymentByCardResponse) {
+                        hideLoading()
                         (parentFragment as MainDialogFragment).openPaymentResultPage(
                             PaymentResponse(
                                 response.paymentStatusNote,
@@ -96,6 +106,49 @@ class PaymentConfirmationFragment : AppCompatDialogFragment() {
                         )
                     }
                 })
+        }
+    }
+
+    private fun showError() {
+        activity?.runOnUiThread {
+            pbLoading.hide()
+            llContainer.show()
+            tvError.show()
+        }
+    }
+
+    private fun showErrorMessage(e: Exception) {
+        e.printStackTrace()
+        if (ErrorUtils.isApiError(e)) {
+            activity?.runOnUiThread {
+                tvError.show()
+                tvError.text = ErrorUtils.getErrorMessage(
+                    e,
+                    locale,
+                    context!!
+                )
+            }
+        } else activity?.runOnUiThread {
+            tvError.show()
+            tvError.text = LanguageUtils.getLocaleStringResource(
+                locale,
+                R.string.network_connection_error,
+                context!!
+            )
+        }
+    }
+
+    private fun showLoading() {
+        pbLoading.show()
+        llContainer.invisible()
+        tvError.hide()
+    }
+
+    private fun hideLoading() {
+        activity?.runOnUiThread {
+            pbLoading.hide()
+            llContainer.show()
+            tvError.hide()
         }
     }
 }
