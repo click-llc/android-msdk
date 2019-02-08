@@ -3,8 +3,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
     }
 }
 
@@ -40,7 +40,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    allprojects {
+        tasks.withType(Javadoc) {
+            excludes = ['**/*.kt']
+            options.addStringOption('Xdoclint:none', '-quiet')
+            options.addStringOption('encoding', 'UTF-8')
+        }
+    }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -60,8 +68,8 @@ dependencies {
 }
 
 ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'Click_Android_SDK'
+    bintrayRepo = 'Click_Android_SDK'
+    bintrayName = 'click_android_msdk_uzbekistan'
 
     publishedGroupId = 'uz.click.mobilesdk'
     libraryName = 'click_android_msdk_uzbekistan'
@@ -72,7 +80,7 @@ ext {
     siteUrl = 'https://click.uz/'
     gitUrl = 'https://github.com/click-llc/android-msdk.git'
 
-    libraryVersion = '0.0.1-alpha'
+    libraryVersion = '0.0.3-alpha'
 
     developerId = 'untec'
     developerName = 'rahmatkhujaevs'
