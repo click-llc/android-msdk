@@ -1,10 +1,14 @@
-[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=0.0.2-alpha) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/0.0.2-alpha/link)
+[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=0.0.3-alpha) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/0.0.3-alpha/link)
 
 # Click Mobile SDK 
 
 Эта библиотека позволяет встроить прием платежей с помощью Click в мобильные приложения на Android. Для правильного функционирования библиотеки, пользователь должен быть подключен к Click Merchant по схеме Shop API.
 
 <img src="/screens/2.png" width="30%"> <img src="/screens/3.png" width="30%">
+
+В этом репозитории лежит код Click Mobile SDK и пример приложения, которое его интегрирует.
+* [Код библиотеки](https://github.com/click-llc/android-msdk/tree/master/mobilesdk)
+* [Код демо-приложения, которое интегрирует Click Mobile SDK](https://github.com/click-llc/android-msdk/tree/master/app)
 
 ### Подключение через Gradle
 Для подключения библиотеки пропишите зависимости в build.gradle модуля:
@@ -18,7 +22,7 @@ dependencies {
 ```
 ### Необходимые разрешения
 
-Следующий разрешение необходимо указать в `AndroidManifest` файле 
+Следующий разрешение необходимо указать в `AndroidManifest` 
 
 ```xml
   <uses-permission android:name="android.permission.INTERNET" />
@@ -157,3 +161,4 @@ public void checkPaymentByRequestId(String requestId, ResponseListener<CheckoutR
 | 1 | обрабатывается      |
 | 2 | успешно оплачен      |
 
+Для каждого метода существует аналог с поддержкой `RxJava`
