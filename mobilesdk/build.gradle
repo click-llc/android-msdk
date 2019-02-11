@@ -80,7 +80,7 @@ ext {
     siteUrl = 'https://click.uz/'
     gitUrl = 'https://github.com/click-llc/android-msdk.git'
 
-    libraryVersion = '0.0.3-alpha'
+    libraryVersion = '0.0.4-alpha'
 
     developerId = 'untec'
     developerName = 'rahmatkhujaevs'
