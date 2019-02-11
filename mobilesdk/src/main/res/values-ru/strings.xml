@@ -2,7 +2,7 @@
 <resources>
     <string name="invoicing">Выставление счета</string>
     <string name="bank_card">Банковская карта</string>
-    <string name="sms_confirmation">На ваш номер придет подтверждение</string>
+    <string name="sms_confirmation">На ваш номер в системе CLICK будет выставлен счет</string>
     <string name="card_props">Введите реквизиты карты</string>
     <string name="confirm_with_sms">Подтвердите СМС кодом</string>
     <string name="sms_code_sent">На ваш номер отправлен СМС, пожалуйста для подтверждения оплаты введите код</string>
@@ -11,11 +11,11 @@
     <string name="next">Продолжить</string>
     <string name="payment_types">Способ оплаты</string>
     <string name="waiting_confirmation">Ожидание подтверждения</string>
-    <string name="invoice_placed">На ваш номер отправлен счет, пожалуйста подтвердите для успешной оплаты</string>
-    <string name="ways_to_confirm">Способы подтверждения</string>
+    <string name="invoice_placed">На указанный номер телефона в системе CLICK был выставлен счет. Вы можете оплатить его следующими способами</string>
+    <string name="ways_to_confirm">Способы оплаты</string>
     <string name="call_ussd">Позвоните на номер *880#</string>
-    <string name="click_bot_sent_code">Click бот отправил вам счет</string>
-    <string name="click_app">Приложение Click</string>
+    <string name="click_bot_sent_code">CLICK бот отправил вам счет</string>
+    <string name="click_app">Приложение CLICK</string>
     <string name="enter_invoices_list">Зайдите в раздел Выставленные счета</string>
     <string name="cancel">Отмена</string>
     <string name="payment">К оплате</string>

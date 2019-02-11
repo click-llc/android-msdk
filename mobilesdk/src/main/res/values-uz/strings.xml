@@ -2,7 +2,7 @@
 <resources>
     <string name="invoicing">Hisob qo\'yish</string>
     <string name="bank_card">Bank kartasi</string>
-    <string name="sms_confirmation">Ushbu raqamga hisob yuboriladi</string>
+    <string name="sms_confirmation">Sizning CLICK tizimidagi raqamingizga hisob ochiladi</string>
     <string name="card_props">Bank kartasi ma\'lumotlarini kiriting</string>
     <string name="confirm_with_sms">SMS kod orqali tasdiqlang</string>
     <string name="sms_code_sent">Sizning telefon raqamingizga SMS yuborildi, iltimos to\'lovni tasdiqlash uchun kodni kiritng</string>
@@ -11,11 +11,11 @@
     <string name="next">Davom etish</string>
     <string name="payment_types">To\'lov turi</string>
     <string name="waiting_confirmation">Tasdiqlash kutilmoqda</string>
-    <string name="invoice_placed">Sizning telefon raqamizga hisob ochildi, to\'lov muvaffaqiyatli o\'tishi uchun tasdiqlang</string>
-    <string name="ways_to_confirm">Tasdiqlash turi</string>
+    <string name="invoice_placed">Ko\'rsatilgan CLICK sistemasidagi telefon raqamga hisob yuborildi. Siz uni quyidagi tarzda to\'lashingiz mumkin</string>
+    <string name="ways_to_confirm">To\'lov turlari</string>
     <string name="call_ussd">*880# raqamiga telefon qiling</string>
-    <string name="click_bot_sent_code">Click bot sizga hisob yubordi</string>
-    <string name="click_app">Click ilovsi</string>
+    <string name="click_bot_sent_code">CLICK bot sizga hisob yubordi</string>
+    <string name="click_app">CLICK ilovsi</string>
     <string name="enter_invoices_list">Выставленные счета bo\'limiga kiring</string>
     <string name="cancel">Bekor qilish</string>
     <string name="payment">To\'lov uchun</string>

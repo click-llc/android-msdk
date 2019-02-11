@@ -2,7 +2,7 @@
 <resources>
     <string name="invoicing">Invoicing</string>
     <string name="bank_card">Bank card</string>
-    <string name="sms_confirmation">A confirmation will be sent to your number</string>
+    <string name="sms_confirmation">Your number at CLICK system will be billed</string>
     <string name="card_props">Enter card details</string>
     <string name="confirm_with_sms">Confirm by SMS code</string>
     <string name="sms_code_sent">An SMS has been sent to your number, please enter the code to confirm the payment</string>
@@ -11,11 +11,11 @@
     <string name="next">Next</string>
     <string name="payment_types">Payment method</string>
     <string name="waiting_confirmation">Waiting for confirmation</string>
-    <string name="invoice_placed">An invoice has been sent to your number, please confirm for successful payment.</string>
-    <string name="ways_to_confirm">Confirmation methods</string>
+    <string name="invoice_placed">The specified phone number in the CLICK system was invoiced. You can pay it in the following ways.</string>
+    <string name="ways_to_confirm">Payment methods</string>
     <string name="call_ussd">Call *880#</string>
-    <string name="click_bot_sent_code">Click sent you an invoice</string>
-    <string name="click_app">Click application</string>
+    <string name="click_bot_sent_code">CLICK sent you an invoice</string>
+    <string name="click_app">CLICK application</string>
     <string name="enter_invoices_list">Go to the section "Invoiced"</string>
     <string name="cancel">Cancel</string>
     <string name="payment">To pay</string>

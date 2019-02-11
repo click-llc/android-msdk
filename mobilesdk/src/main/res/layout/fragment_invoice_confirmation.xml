@@ -147,7 +147,7 @@
                     android:id="@+id/tvBot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Telegram Click"
+                    android:text="Telegram CLICK"
                     android:textColor="@color/colorMainText"
                     android:textSize="14sp" />
 
