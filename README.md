@@ -11,7 +11,7 @@
 * [Код демо-приложения, которое интегрирует Click Mobile SDK](https://github.com/click-llc/android-msdk/tree/master/app)
 
 ### Подключение через Gradle
-Для подключения библиотеки пропишите зависимости в build.gradle модуля:
+Для подключения библиотеки необходимо прописать зависимости в build.gradle модуля:
 
 ```groovy
 
@@ -22,7 +22,7 @@ dependencies {
 ```
 ### Необходимые разрешения
 
-Следующий разрешение необходимо указать в `AndroidManifest` 
+Следующее разрешение необходимо указать в `AndroidManifest` 
 
 ```xml
   <uses-permission android:name="android.permission.INTERNET" />
@@ -30,23 +30,23 @@ dependencies {
 
 ### Использование библиотеки
 
-Для начала работы с диалогом приема платежей Click надо обратиться к классу `ClickMerchant`. В `ClickMerchant` передается класс конфигурации `ClickMerchantConfig`
+Для начала работы с диалогом приема платежей CLICK надо обратиться к классу `ClickMerchant`. В `ClickMerchant` передается класс конфигурации `ClickMerchantConfig`
 
 Поля `ClickMerchantConfig`:
 
 Обязательные:
 * serviceId (Long) - идентификатор сервиса или товара поставщика
 * merchantId (Long) - идентификатор поставщика
-* merchantUserId (Long) - идентификатор пользователя в системе поставщиков
+* merchantUserId (Long) - идентификатор мерчанта в системе поставщиков
 * amount (Double) - сумма оплаты
 * locale (String) - локализация языка диалога ("UZ", "RU", "EN")
 
 Необязательные:
 * productName (String) - название товара
 * productDescription (String) - описание товара
-* requestId (String) - идентификатор платежа. С помощью него можно вывести на диалог результаты оплаты с таким идентификатором
+* requestId (String) - идентификатор платежа. Используется, если необходимо проверка статуса платежа. 
 * transactionParam (String) – параметр транзакции, характеризующий за что платить клиент
-* communalParam (String) – допольнительный параметр
+* communalParam (String) – дополнительный параметр
 * paymentOption (PaymentOptionEnum) – способ оплаты (USSD, BANK_CARD)
 
 Пример:
@@ -63,7 +63,7 @@ dependencies {
             .merchantUserId(12345)
             .build()
 ```
-Для того, чтобы вызвать диалог надо использовать следующий метод:
+Для того, чтобы вызвать диалог оплаты с помощью CLICK, надо использовать следующий метод:
 
 ```java
 ClickMerchant.init(supportFragmentManager, config,
@@ -106,9 +106,9 @@ ClickMerchant.init(supportFragmentManager, config,
 
 ### Документация Click Merchant Manager
 
-Для работы с библиотекой вам нужно получить идентификатор платежа.
+Для работы с библиотекой необходимо получить идентификатор платежа.
 
-Чтобы получить идентификатор платежа надо отправить инициализирующий запрос:
+Чтобы получить идентификатор платежа, надо отправить инициализирующий запрос:
 
 ```java
 public void sendInitialRequest(
@@ -117,13 +117,13 @@ public void sendInitialRequest(
     Long merchantUserId, String language, ResponseListener<InitialResponse> listener
 )
 ```
-Этот запрос возвращает идентификатор платежа(`requestId`), с помощью которого будет выполнятеся почти все последующие операции.
+Этот запрос возвращает идентификатор платежа(`requestId`), который после будет использоваться для проведения платежа
 
 ### Выставление счета
 
-С помощью этой библиотеки можно выставить счет двумя способами. Первый способ выставить счет по мобильному номеру, второй способ выставить счет по банковской карте.
+С помощью этой библиотеки можно выставить счет двумя способами. Первый способ выставить счет по телефону номеру в системе CLICK, второй способ выставить счет по банковской карте.
 
-Выставление счета по мобильному номеру:
+Выставление счета по телефону номеру в системе CLICK:
 ```java
 public void paymentByUSSD(String requestId, String phoneNumber, ResponseListener<InvoiceResponse> listener) 
 ```
