@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=0.0.5-alpha) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/0.0.5-alpha/link)
+[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=1.0.0) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/1.0.0/link)
 
 # Click Mobile SDK 
 
