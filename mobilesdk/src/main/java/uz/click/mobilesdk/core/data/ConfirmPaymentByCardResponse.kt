@@ -11,11 +11,11 @@ data class ConfirmPaymentByCardResponse(
     @field:Json(name = "error_note")
     val errorNote: String?,
     @field:Json(name = "payment_status_note")
-    var paymentStatusNote: String,
+    var paymentStatusNote: String?,
     @field:Json(name = "payment_id")
     var paymentId: Long?,
     @field:Json(name = "payment_status")
-    var paymentStatus: Int,
+    var paymentStatus: Int?,
     @field:Json(name = "request_id")
     val requestId: String
 )

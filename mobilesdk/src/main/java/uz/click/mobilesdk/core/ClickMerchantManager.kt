@@ -6,6 +6,7 @@ import android.util.Log
 import com.squareup.moshi.Moshi
 import io.reactivex.Single
 import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
 import uz.click.mobilesdk.BuildConfig
 import uz.click.mobilesdk.core.callbacks.ResponseListener
 import uz.click.mobilesdk.core.data.*
@@ -40,11 +41,21 @@ class ClickMerchantManager {
         dispatcher.maxRequests = 1
         val okhttpClientBuilder = OkHttpClient.Builder()
         okhttpClientBuilder.dispatcher(dispatcher)
+        okhttpClientBuilder.addInterceptor(loggingInterceptor())
         okhttpClientBuilder
             .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS)
         okClient = okhttpClientBuilder.build()
+    }
+
+    private fun loggingInterceptor(): Interceptor {
+        val logging = HttpLoggingInterceptor()
+        if (BuildConfig.DEBUG)
+            logging.level = HttpLoggingInterceptor.Level.BODY
+        else
+            logging.level = HttpLoggingInterceptor.Level.NONE
+        return logging
     }
 
     fun sendInitialRequest(

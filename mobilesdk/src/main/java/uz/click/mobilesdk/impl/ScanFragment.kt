@@ -17,6 +17,7 @@ import com.google.android.gms.vision.text.TextRecognizer
 import kotlinx.android.synthetic.main.fragment_scan.*
 import uz.click.mobilesdk.R
 import uz.click.mobilesdk.utils.ValidationUtils
+import java.util.regex.Pattern
 
 
 /**
@@ -29,8 +30,11 @@ class ScanFragment : AppCompatDialogFragment() {
     companion object {
         const val TAG = "DETECTOR"
         const val REQUEST_CAMERA = 10001
+        const val REGEX_FOR_CARD_VALIDATION = "[0-9bs]{4} [0-9bs]{4} [0-9bs]{4} [0-9bs]{4}"
+        const val REGEX_EXPIRED_DATE = "[0-9bsS]{2}/[0-9bs]{2}"
     }
-
+    var number = ""
+    var date = ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_scan, container, false)
     }
@@ -96,15 +100,19 @@ class ScanFragment : AppCompatDialogFragment() {
 
                 override fun receiveDetections(detections: Detector.Detections<TextBlock>?) {
                     if (detections?.detectedItems?.size() != 0) {
-                        var number = ""
-                        var date = ""
+
                         for (i in 0 until detections?.detectedItems?.size()!!) {
                             val textBlock = detections.detectedItems.valueAt(i)
-                            if (ValidationUtils.isCardValid(textBlock.value)) {
-                                number = textBlock.value
+                            val patternCardNumber = Pattern.compile(REGEX_FOR_CARD_VALIDATION)
+                            val matcherCardNumber = patternCardNumber.matcher(textBlock.value)
+                            while (matcherCardNumber.find()) {
+                                number = matcherCardNumber.group().replace('b','6').replace('s','5')
                             }
-                            if (ValidationUtils.isExpireDateValid((textBlock.value))) {
-                                date = textBlock.value
+
+                            val patternCardExpiredDate = Pattern.compile(REGEX_EXPIRED_DATE)
+                            val matcherCardExpired = patternCardExpiredDate.matcher(textBlock.value)
+                            while (matcherCardExpired.find()) {
+                                date = matcherCardExpired.group().replace('b','6').replace('s','5')
                             }
                         }
                         if (number.isNotEmpty() && date.isNotEmpty()) {
