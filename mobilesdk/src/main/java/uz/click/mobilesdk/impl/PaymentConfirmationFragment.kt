@@ -24,6 +24,7 @@ import uz.click.mobilesdk.utils.hide
 import uz.click.mobilesdk.utils.hideKeyboard
 import uz.click.mobilesdk.utils.invisible
 import uz.click.mobilesdk.utils.show
+import java.lang.IllegalStateException
 import java.util.*
 
 /**
@@ -100,7 +101,7 @@ class PaymentConfirmationFragment : AppCompatDialogFragment() {
                             PaymentResponse(
                                 response.paymentStatusNote,
                                 response.paymentId,
-                                response.paymentStatus,
+                                response.paymentStatus ?: throw IllegalStateException(),
                                 0
                             )
                         )

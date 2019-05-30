@@ -1,8 +1,8 @@
-[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=0.0.4-alpha) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/0.0.4-alpha/link)
+[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=1.0.1) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/1.0.1/link)
 
 # Click Mobile SDK 
 
-Эта библиотека позволяет встроить прием платежей с помощью Click в мобильные приложения на Android. Для правильного функционирования библиотеки, пользователь должен быть подключен к Click Merchant по схеме Shop API.
+Эта библиотека позволяет встроить прием платежей с помощью Click в мобильные приложения на Android. Библиотеку можно использовать для подключения как поставщиков с биллингом, так и без биллинга. Для поставщиков с биллингом нужно реализовать [SHOP-API](https://docs.click.uz/click-api/) на сервере приложения.
 
 <img src="/screens/2.png" width="30%"> <img src="/screens/3.png" width="30%">
 
