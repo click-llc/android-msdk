@@ -1,7 +1,10 @@
 package uz.click.mobilesdk.impl
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatDialogFragment
 import android.view.LayoutInflater
@@ -22,7 +25,16 @@ import uz.click.mobilesdk.core.data.InvoiceResponse
 import uz.click.mobilesdk.core.errors.ArgumentEmptyException
 import uz.click.mobilesdk.impl.paymentoptions.PaymentOption
 import uz.click.mobilesdk.impl.paymentoptions.PaymentOptionEnum
-import uz.click.mobilesdk.utils.*
+import uz.click.mobilesdk.utils.CardExpiryDateFormatWatcher
+import uz.click.mobilesdk.utils.CardNumberFormatWatcher
+import uz.click.mobilesdk.utils.ErrorUtils
+import uz.click.mobilesdk.utils.LanguageUtils
+import uz.click.mobilesdk.utils.PhoneNumberTextWatcher
+import uz.click.mobilesdk.utils.formatDecimals
+import uz.click.mobilesdk.utils.hide
+import uz.click.mobilesdk.utils.hideKeyboard
+import uz.click.mobilesdk.utils.invisible
+import uz.click.mobilesdk.utils.show
 import java.util.*
 
 
@@ -38,9 +50,11 @@ class PaymentFragment : AppCompatDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_payment, container, false)
     }
+
     init {
         setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listener = (parentFragment as MainDialogFragment?)?.getListener()
@@ -144,9 +158,41 @@ class PaymentFragment : AppCompatDialogFragment() {
         }
 
         ivScanner.setOnClickListener {
-            parentFragment?.let {
-                val parent = parentFragment as MainDialogFragment
-                parent.scanCard()
+            if (ActivityCompat.checkSelfPermission(
+                    context!!,
+                    Manifest.permission.CAMERA
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                requestPermissions(
+                    arrayOf(
+                        Manifest.permission.CAMERA
+                    ),
+                    ScanFragment.REQUEST_CAMERA
+                )
+            } else {
+                parentFragment?.let {
+                    val parent = parentFragment as MainDialogFragment
+                    parent.scanCard()
+                }
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            ScanFragment.REQUEST_CAMERA -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    parentFragment?.let {
+                        val parent = parentFragment as MainDialogFragment
+                        parent.scanCard()
+                    }
+                } else {
+                }
+                return
+            }
+            else -> {
+                // Ignore all other requests.
             }
         }
     }
@@ -192,7 +238,7 @@ class PaymentFragment : AppCompatDialogFragment() {
                         when (config.paymentOption) {
                             PaymentOptionEnum.BANK_CARD -> {
                                 when {
-                                    response.payment.paymentStatus == 1 || response.payment.paymentStatus == 0-> {
+                                    response.payment.paymentStatus == 1 || response.payment.paymentStatus == 0 -> {
                                         parentFragment?.let {
                                             val parent = parentFragment as MainDialogFragment
                                             parent.openPaymentConfirmation(null, requestId)
