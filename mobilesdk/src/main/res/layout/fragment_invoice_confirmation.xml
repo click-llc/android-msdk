@@ -26,7 +26,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/waiting_confirmation"
-                android:textColor="@color/colorMainText"
+                android:textColor="?attr/colorMainText"
                 android:textSize="18sp" />
 
 
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                app:indicatorColor="@color/colorButtonDisabled"
+                app:indicatorColor="?attr/colorButtonDisabled"
                 app:indicatorName="BallPulseIndicator" />
 
         </LinearLayout>
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/invoice_placed"
-            android:textColor="@color/colorSecondaryText"
+            android:textColor="?attr/colorSecondaryText"
             android:textSize="14sp" />
 
         <View
@@ -55,7 +55,7 @@
             android:layout_height="2px"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="#e4e4e4" />
+            android:background="#27000000" />
 
 
         <TextView
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ways_to_confirm"
-            android:textColor="@color/colorMainText"
+            android:textColor="?attr/colorMainText"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -96,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="USSD *880#"
-                    android:textColor="@color/colorMainText"
+                    android:textColor="?attr/colorMainText"
                     android:textSize="14sp" />
 
                 <TextView
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/call_ussd"
-                    android:textColor="@color/colorSecondaryText"
+                    android:textColor="?attr/colorSecondaryText"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -114,7 +114,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_next" />
+                android:src="@drawable/ic_next"
+                android:tint="?attr/colorNextIcon" />
 
         </LinearLayout>
 
@@ -148,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Telegram CLICK"
-                    android:textColor="@color/colorMainText"
+                    android:textColor="?attr/colorMainText"
                     android:textSize="14sp" />
 
                 <TextView
@@ -157,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/click_bot_sent_code"
-                    android:textColor="@color/colorSecondaryText"
+                    android:textColor="?attr/colorSecondaryText"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -166,7 +167,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_next" />
+                android:src="@drawable/ic_next"
+                android:tint="?attr/colorNextIcon" />
 
         </LinearLayout>
 
@@ -200,7 +202,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/click_app"
-                    android:textColor="@color/colorMainText"
+                    android:textColor="?attr/colorMainText"
                     android:textSize="14sp" />
 
                 <TextView
@@ -209,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/enter_invoices_list"
-                    android:textColor="@color/colorSecondaryText"
+                    android:textColor="?attr/colorSecondaryText"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -218,15 +220,15 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_next" />
+                android:src="@drawable/ic_next"
+                android:tint="?attr/colorNextIcon" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnBack"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/next_button_rounded">
+            android:layout_height="60dp">
 
             <TextView
                 android:id="@+id/tvBack"

@@ -16,6 +16,7 @@ import com.google.android.gms.vision.text.TextBlock
 import com.google.android.gms.vision.text.TextRecognizer
 import kotlinx.android.synthetic.main.fragment_scan.*
 import uz.click.mobilesdk.R
+import uz.click.mobilesdk.impl.paymentoptions.ThemeOptions
 import uz.click.mobilesdk.utils.ValidationUtils
 import java.util.regex.Pattern
 
@@ -26,6 +27,7 @@ import java.util.regex.Pattern
 class ScanFragment : AppCompatDialogFragment() {
 
     private var cameraSource: CameraSource? = null
+    private lateinit var themeMode: ThemeOptions
 
     companion object {
         const val TAG = "DETECTOR"
@@ -33,16 +35,29 @@ class ScanFragment : AppCompatDialogFragment() {
         const val REGEX_FOR_CARD_VALIDATION = "[0-9bs]{4} [0-9bs]{4} [0-9bs]{4} [0-9bs]{4}"
         const val REGEX_EXPIRED_DATE = "[0-9bsS]{2}/[0-9bs]{2}"
     }
+
+
     var number = ""
     var date = ""
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_scan, container, false)
     }
-    init {
-        setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        when (themeMode) {
+            ThemeOptions.LIGHT -> {
+                setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
+            }
+            ThemeOptions.NIGHT -> {
+                setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogThemeDark)
+            }
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +80,12 @@ class ScanFragment : AppCompatDialogFragment() {
                 .build()
 
             surfaceView.holder.addCallback(object : SurfaceHolder.Callback {
-                override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
+                override fun surfaceChanged(
+                    holder: SurfaceHolder?,
+                    format: Int,
+                    width: Int,
+                    height: Int
+                ) {
 
                 }
 
@@ -106,13 +126,15 @@ class ScanFragment : AppCompatDialogFragment() {
                             val patternCardNumber = Pattern.compile(REGEX_FOR_CARD_VALIDATION)
                             val matcherCardNumber = patternCardNumber.matcher(textBlock.value)
                             while (matcherCardNumber.find()) {
-                                number = matcherCardNumber.group().replace('b','6').replace('s','5')
+                                number =
+                                    matcherCardNumber.group().replace('b', '6').replace('s', '5')
                             }
 
                             val patternCardExpiredDate = Pattern.compile(REGEX_EXPIRED_DATE)
                             val matcherCardExpired = patternCardExpiredDate.matcher(textBlock.value)
                             while (matcherCardExpired.find()) {
-                                date = matcherCardExpired.group().replace('b','6').replace('s','5')
+                                date =
+                                    matcherCardExpired.group().replace('b', '6').replace('s', '5')
                             }
                         }
                         if (number.isNotEmpty() && date.isNotEmpty()) {

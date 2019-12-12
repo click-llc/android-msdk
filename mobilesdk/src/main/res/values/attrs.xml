@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorPrimarySdk" format="reference" />
+    <attr name="colorPrimaryDarkSdk" format="reference" />
+    <attr name="colorAccentSdk" format="reference" />
+    <attr name="cl_background" format="reference" />
+    <attr name="colorPrimaryAccent" format="reference" />
+    <attr name="colorErrorTheme" format="reference" />
+    <attr name="colorMainText" format="reference" />
+    <attr name="colorSecondaryText" format="reference" />
+    <attr name="colorSheetBackground" format="reference" />
+    <attr name="colorButtonDisabled" format="reference" />
+    <attr name="colorButtonEnabled" format="reference" />
+    <attr name="colorButtonPressed" format="reference" />
+    <attr name="colorNextIcon" format="reference"/>
+    <attr name="nextButtonRounded" format="reference"/>
+</resources>

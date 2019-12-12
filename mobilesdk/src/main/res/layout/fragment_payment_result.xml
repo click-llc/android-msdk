@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="@string/paid"
-                    android:textColor="@color/colorMainText"
+                    android:textColor="?attr/colorMainText"
                     android:textSize="18sp" />
 
                 <TextView
@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/success_payment"
-                    android:textColor="@color/colorSecondaryText"
+                    android:textColor="?attr/colorSecondaryText"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -56,7 +56,7 @@
             android:layout_height="2px"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="#e4e4e4" />
+            android:background="#27000000" />
 
         <LinearLayout
             android:id="@+id/llPaymentNumber"
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/payment_number"
-                android:textColor="@color/colorSecondaryText"
+                android:textColor="?attr/colorSecondaryText"
                 android:textSize="18sp" />
 
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:text="748538271"
-                android:textColor="@color/colorMainText"
+                android:textColor="?attr/colorMainText"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/to_be_paid"
-                android:textColor="@color/colorSecondaryText"
+                android:textColor="?attr/colorSecondaryText"
                 android:textSize="18sp" />
 
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:text="12,000"
-                android:textColor="@color/colorMainText"
+                android:textColor="?attr/colorMainText"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -118,7 +118,7 @@
                 android:layout_marginLeft="8dp"
                 android:gravity="right"
                 android:text="@string/abbr"
-                android:textColor="@color/colorMainText"
+                android:textColor="?attr/colorMainText"
                 android:textSize="18sp" />
 
 
@@ -127,8 +127,7 @@
         <LinearLayout
             android:id="@+id/btnClose"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/next_button_rounded">
+            android:layout_height="60dp">
 
             <TextView
                 android:id="@+id/tvClose"

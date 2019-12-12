@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatDialogFragment
+import android.support.v7.view.ContextThemeWrapper
+import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +28,7 @@ import uz.click.mobilesdk.core.data.InvoiceResponse
 import uz.click.mobilesdk.core.errors.ArgumentEmptyException
 import uz.click.mobilesdk.impl.paymentoptions.PaymentOption
 import uz.click.mobilesdk.impl.paymentoptions.PaymentOptionEnum
+import uz.click.mobilesdk.impl.paymentoptions.ThemeOptions
 import uz.click.mobilesdk.utils.CardExpiryDateFormatWatcher
 import uz.click.mobilesdk.utils.CardNumberFormatWatcher
 import uz.click.mobilesdk.utils.ErrorUtils
@@ -45,22 +49,74 @@ class PaymentFragment : AppCompatDialogFragment() {
     var requestId: String = ""
     private var mode = PaymentOptionEnum.USSD
     private lateinit var locale: Locale
-    private val clickMerchantManager = ClickMerchantManager()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_payment, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments == null) throw ArgumentEmptyException()
+
+        config = arguments!!.getSerializable(
+            MainDialogFragment.CLICK_MERCHANT_CONFIG
+        ) as ClickMerchantConfig
+
+        when (config.themeMode) {
+            ThemeOptions.LIGHT -> {
+                setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
+
+            }
+            ThemeOptions.NIGHT -> {
+                setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogThemeDark)
+
+            }
+        }
     }
 
-    init {
-        setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
+    private val clickMerchantManager = ClickMerchantManager()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return when (config.themeMode) {
+            ThemeOptions.LIGHT -> {
+                val contextWrapper = ContextThemeWrapper(activity, R.style.Theme_App_Light)
+
+                inflater.cloneInContext(contextWrapper)
+                    .inflate(R.layout.fragment_payment, container, false)
+            }
+            ThemeOptions.NIGHT -> {
+                val contextWrapper = ContextThemeWrapper(activity, R.style.Theme_App_Dark)
+
+                inflater.cloneInContext(contextWrapper)
+                    .inflate(R.layout.fragment_payment, container, false)
+            }
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listener = (parentFragment as MainDialogFragment?)?.getListener()
+        when (config.themeMode) {
+            ThemeOptions.LIGHT -> {
+                btnNext.setBackgroundResource(R.drawable.next_button_rounded)
+                viewMobileNumberUnderline.setBackgroundResource(R.drawable.underline_background)
+                viewCardNumberUnderline.setBackgroundResource(R.drawable.underline_background)
+                viewCardDateUnderline.setBackgroundResource(R.drawable.underline_background)
+
+            }
+            ThemeOptions.NIGHT -> {
+                btnNext.setBackgroundResource(R.drawable.next_button_rounded_dark)
+                viewMobileNumberUnderline.setBackgroundResource(R.drawable.underline_background_dark)
+                viewCardNumberUnderline.setBackgroundResource(R.drawable.underline_background_dark)
+                viewCardDateUnderline.setBackgroundResource(R.drawable.underline_background_dark)
+
+            }
+        }
 
         if (arguments != null) {
-            config = arguments!!.getSerializable(MainDialogFragment.CLICK_MERCHANT_CONFIG) as ClickMerchantConfig
+            config =
+                arguments!!.getSerializable(MainDialogFragment.CLICK_MERCHANT_CONFIG) as ClickMerchantConfig
             tvTitle.text = config.productName
             tvSubtitle.text = config.productDescription
             tvSum.text = config.amount.formatDecimals()
@@ -69,28 +125,48 @@ class PaymentFragment : AppCompatDialogFragment() {
 
             locale = Locale(config.locale.toLowerCase())
 
-            btnChange.text = LanguageUtils.getLocaleStringResource(locale, R.string.change, context!!)
-            tvToPay.text = LanguageUtils.getLocaleStringResource(locale, R.string.payment, context!!)
+            btnChange.text =
+                LanguageUtils.getLocaleStringResource(locale, R.string.change, context!!)
+            tvToPay.text =
+                LanguageUtils.getLocaleStringResource(locale, R.string.payment, context!!)
             tvNext.text = LanguageUtils.getLocaleStringResource(locale, R.string.next, context!!)
             tvAbbr.text = LanguageUtils.getLocaleStringResource(locale, R.string.abbr, context!!)
             tvRetry.text = LanguageUtils.getLocaleStringResource(locale, R.string.retry, context!!)
             tvErrorText.text =
-                LanguageUtils.getLocaleStringResource(locale, R.string.connection_problem, context!!)
+                LanguageUtils.getLocaleStringResource(
+                    locale,
+                    R.string.connection_problem,
+                    context!!
+                )
 
             when (mode) {
                 PaymentOptionEnum.BANK_CARD -> {
                     llBankCard.show()
                     llUssd.hide()
-                    ivPaymentType.setImageDrawable(ContextCompat.getDrawable(context!!, R.drawable.ic_cards))
+                    ivPaymentType.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context!!,
+                            R.drawable.ic_cards
+                        )
+                    )
                     tvPaymentTypeTitle.text =
                         LanguageUtils.getLocaleStringResource(locale, R.string.bank_card, context!!)
                     tvPaymentTypeSubtitle.text =
-                        LanguageUtils.getLocaleStringResource(locale, R.string.card_props, context!!)
+                        LanguageUtils.getLocaleStringResource(
+                            locale,
+                            R.string.card_props,
+                            context!!
+                        )
                 }
                 PaymentOptionEnum.USSD -> {
                     llBankCard.hide()
                     llUssd.show()
-                    ivPaymentType.setImageDrawable(ContextCompat.getDrawable(context!!, R.drawable.ic_880))
+                    ivPaymentType.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context!!,
+                            R.drawable.ic_880
+                        )
+                    )
                     tvPaymentTypeTitle.text =
                         LanguageUtils.getLocaleStringResource(locale, R.string.invoicing, context!!)
                     tvPaymentTypeSubtitle.text = LanguageUtils.getLocaleStringResource(
@@ -125,6 +201,13 @@ class PaymentFragment : AppCompatDialogFragment() {
 
         etMobileNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             viewMobileNumberUnderline.isEnabled = !hasFocus
+        }
+
+        etCardNumber.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            viewCardNumberUnderline.isEnabled = !hasFocus
+        }
+        etCardDate.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            viewCardDateUnderline.isEnabled = !hasFocus
         }
 
         llChange.setOnClickListener {
@@ -179,7 +262,11 @@ class PaymentFragment : AppCompatDialogFragment() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         when (requestCode) {
             ScanFragment.REQUEST_CAMERA -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
@@ -227,52 +314,54 @@ class PaymentFragment : AppCompatDialogFragment() {
             )
         } else {
             showLoading()
-            clickMerchantManager.checkPaymentByRequestId(requestId, object : ResponseListener<CheckoutResponse> {
-                override fun onFailure(e: Exception) {
-                    e.printStackTrace()
-                    showError()
-                }
+            clickMerchantManager.checkPaymentByRequestId(
+                requestId,
+                object : ResponseListener<CheckoutResponse> {
+                    override fun onFailure(e: Exception) {
+                        e.printStackTrace()
+                        showError()
+                    }
 
-                override fun onSuccess(response: CheckoutResponse) {
-                    if (response.payment.paymentStatusDescription != null) {
-                        when (config.paymentOption) {
-                            PaymentOptionEnum.BANK_CARD -> {
-                                when {
-                                    response.payment.paymentStatus == 1 || response.payment.paymentStatus == 0 -> {
-                                        parentFragment?.let {
-                                            val parent = parentFragment as MainDialogFragment
-                                            parent.openPaymentConfirmation(null, requestId)
+                    override fun onSuccess(response: CheckoutResponse) {
+                        if (response.payment.paymentStatusDescription != null) {
+                            when (config.paymentOption) {
+                                PaymentOptionEnum.BANK_CARD -> {
+                                    when {
+                                        response.payment.paymentStatus == 1 || response.payment.paymentStatus == 0 -> {
+                                            parentFragment?.let {
+                                                val parent = parentFragment as MainDialogFragment
+                                                parent.openPaymentConfirmation(null, requestId)
+                                            }
                                         }
-                                    }
-                                    response.payment.paymentStatus == 2 || response.payment.paymentStatus < 0 -> {
-                                        parentFragment?.let {
-                                            val parent = parentFragment as MainDialogFragment
-                                            parent.openPaymentResultPage(response.payment)
+                                        response.payment.paymentStatus == 2 || response.payment.paymentStatus < 0 -> {
+                                            parentFragment?.let {
+                                                val parent = parentFragment as MainDialogFragment
+                                                parent.openPaymentResultPage(response.payment)
+                                            }
                                         }
-                                    }
 
-                                }
-                            }
-                            PaymentOptionEnum.USSD -> {
-                                when {
-                                    response.payment.paymentStatus == 1 || response.payment.paymentStatus == 0 -> {
-                                        parentFragment?.let {
-                                            val parent = parentFragment as MainDialogFragment
-                                            parent.openInvoiceConfirmationPage(requestId)
-                                        }
-                                    }
-                                    response.payment.paymentStatus == 2 || response.payment.paymentStatus < 0 -> {
-                                        parentFragment?.let {
-                                            val parent = parentFragment as MainDialogFragment
-                                            parent.openPaymentResultPage(response.payment)
-                                        }
                                     }
                                 }
+                                PaymentOptionEnum.USSD -> {
+                                    when {
+                                        response.payment.paymentStatus == 1 || response.payment.paymentStatus == 0 -> {
+                                            parentFragment?.let {
+                                                val parent = parentFragment as MainDialogFragment
+                                                parent.openInvoiceConfirmationPage(requestId)
+                                            }
+                                        }
+                                        response.payment.paymentStatus == 2 || response.payment.paymentStatus < 0 -> {
+                                            parentFragment?.let {
+                                                val parent = parentFragment as MainDialogFragment
+                                                parent.openPaymentResultPage(response.payment)
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                        }
-                    } else showResult()
-                }
-            })
+                        } else showResult()
+                    }
+                })
         }
     }
 
@@ -282,9 +371,17 @@ class PaymentFragment : AppCompatDialogFragment() {
             PaymentOptionEnum.BANK_CARD -> {
                 when {
                     etCardNumber.text.toString().isEmpty() -> etCardNumber.error =
-                        LanguageUtils.getLocaleStringResource(locale, R.string.enter_card_number, context!!)
+                        LanguageUtils.getLocaleStringResource(
+                            locale,
+                            R.string.enter_card_number,
+                            context!!
+                        )
                     etCardDate.text.toString().isEmpty() -> etCardDate.error =
-                        LanguageUtils.getLocaleStringResource(locale, R.string.enter_expire_date, context!!)
+                        LanguageUtils.getLocaleStringResource(
+                            locale,
+                            R.string.enter_expire_date,
+                            context!!
+                        )
                     else -> {
                         showLoading()
                         clickMerchantManager.paymentByCard(
@@ -303,8 +400,12 @@ class PaymentFragment : AppCompatDialogFragment() {
                                         val parent = it as MainDialogFragment
 
                                         val prefs =
-                                            context?.getSharedPreferences(BuildConfig.BASE_XML, Context.MODE_PRIVATE)
-                                        prefs?.edit()?.putString(requestId, response.phoneNumber)?.apply()
+                                            context?.getSharedPreferences(
+                                                BuildConfig.BASE_XML,
+                                                Context.MODE_PRIVATE
+                                            )
+                                        prefs?.edit()?.putString(requestId, response.phoneNumber)
+                                            ?.apply()
 
                                         parent.openPaymentConfirmation(response, requestId)
                                     }
@@ -336,7 +437,11 @@ class PaymentFragment : AppCompatDialogFragment() {
                             }
                         })
                 } else etMobileNumber.error =
-                    LanguageUtils.getLocaleStringResource(locale, R.string.enter_valid_phone_number, context!!)
+                    LanguageUtils.getLocaleStringResource(
+                        locale,
+                        R.string.enter_valid_phone_number,
+                        context!!
+                    )
             }
         }
     }

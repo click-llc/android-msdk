@@ -8,10 +8,28 @@
     <color name="colorError">#F44336</color>
     <color name="colorMainText">#252525</color>
     <color name="colorSecondaryText">#7f7f7f</color>
-
     <color name="colorSheetBackground">#f7f7f7</color>
-
     <color name="colorButtonDisabled">#e1e1e1</color>
     <color name="colorButtonEnabled">@color/colorPrimaryAccent</color>
     <color name="colorButtonPressed">#53ceff</color>
+    <color name="colorButtonEnabledBg">#cecece</color>
+    <color name="colorNextIcon">#979797</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="colorPrimarySdkDark">@color/colorPrimaryAccentDark</color>
+    <color name="colorPrimaryDarkSdkDark">@color/colorPrimaryAccentDark</color>
+    <color name="colorAccentSdkDark">@color/colorPrimaryAccentDark</color>
+    <color name="cl_backgroundDark">#373845</color>
+    <color name="colorPrimaryAccentDark">#3fb9d0</color>
+    <color name="colorErrorThemeDark">#F44336</color>
+    <color name="colorMainTextDark">#FFFFFF</color>
+    <color name="colorSecondaryTextDark">#B3B3B3</color>
+    <color name="colorSheetBackgroundDark">#373845</color>
+    <color name="colorButtonDisabledDark">#B3B3B3</color>
+    <color name="colorButtonEnabledDark">@color/colorPrimaryAccentDark</color>
+    <color name="colorButtonPressedDark">#37A1B4</color>
+    <color name="colorButtonEnabledBgDark">#A3A3A3</color>
+    <color name="colorNextIconDark">#D8D8D8</color>
+
+
 </resources>

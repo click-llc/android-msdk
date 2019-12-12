@@ -2,6 +2,7 @@ package uz.click.mobilesdk.impl.paymentoptions
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatDialogFragment
+import android.support.v7.view.ContextThemeWrapper
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import uz.click.mobilesdk.R
 import uz.click.mobilesdk.core.errors.ArgumentEmptyException
 import uz.click.mobilesdk.impl.MainDialogFragment
 import uz.click.mobilesdk.impl.MainDialogFragment.Companion.LOCALE
+import uz.click.mobilesdk.impl.MainDialogFragment.Companion.THEME_MODE
 import uz.click.mobilesdk.utils.LanguageUtils
 import java.util.*
 
@@ -18,13 +20,45 @@ import java.util.*
  * @author rahmatkhujaevs on 29/01/19
  * */
 class PaymentOptionListFragment : AppCompatDialogFragment() {
+    private lateinit var themeMode: ThemeOptions
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_payment_option, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments == null) throw ArgumentEmptyException()
+        themeMode = arguments!!.getSerializable(THEME_MODE) as ThemeOptions
+        when (themeMode) {
+            ThemeOptions.LIGHT -> {
+                setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
+
+            }
+            ThemeOptions.NIGHT -> {
+                setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogThemeDark)
+            }
+        }
     }
-    init {
-        setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return when (themeMode) {
+            ThemeOptions.LIGHT -> {
+                val contextWrapper = ContextThemeWrapper(activity, R.style.Theme_App_Light)
+
+                inflater.cloneInContext(contextWrapper)
+                    .inflate(R.layout.fragment_payment_option, container, false)
+            }
+            ThemeOptions.NIGHT -> {
+                val contextWrapper = ContextThemeWrapper(activity, R.style.Theme_App_Dark)
+
+                inflater.cloneInContext(contextWrapper)
+                    .inflate(R.layout.fragment_payment_option, container, false)
+            }
+        }
+
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -32,13 +66,18 @@ class PaymentOptionListFragment : AppCompatDialogFragment() {
 
         if (arguments != null) {
             val locale = Locale(arguments!!.getString(LOCALE, "ru"))
-            tvTitle.text = LanguageUtils.getLocaleStringResource(locale, R.string.payment_types, context!!)
+            tvTitle.text =
+                LanguageUtils.getLocaleStringResource(locale, R.string.payment_types, context!!)
             val items = ArrayList<PaymentOption>()
             items.add(
                 PaymentOption(
                     R.drawable.ic_880,
                     LanguageUtils.getLocaleStringResource(locale, R.string.invoicing, context!!),
-                    LanguageUtils.getLocaleStringResource(locale, R.string.sms_confirmation, context!!),
+                    LanguageUtils.getLocaleStringResource(
+                        locale,
+                        R.string.sms_confirmation,
+                        context!!
+                    ),
                     PaymentOptionEnum.USSD
                 )
             )
@@ -50,7 +89,7 @@ class PaymentOptionListFragment : AppCompatDialogFragment() {
                     PaymentOptionEnum.BANK_CARD
                 )
             )
-            val adapter = PaymentOptionAdapter(context!!, items)
+            val adapter = PaymentOptionAdapter(context!!, themeMode, items)
 
             adapter.callback = object : PaymentOptionAdapter.OnPaymentOptionSelected {
                 override fun selected(position: Int, item: PaymentOption) {

@@ -2,6 +2,7 @@ package uz.click.mobilesdk.impl.paymentoptions
 
 import android.content.Context
 import android.support.v4.content.ContextCompat
+import android.support.v7.view.ContextThemeWrapper
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -14,19 +15,41 @@ import uz.click.mobilesdk.R
 /**
  * @author rahmatkhujaevs on 29/01/19
  * */
-class PaymentOptionAdapter(val context: Context, val items: ArrayList<PaymentOption>) :
+class PaymentOptionAdapter(
+    val context: Context,
+    val themeMode: ThemeOptions = ThemeOptions.LIGHT,
+    val items: ArrayList<PaymentOption>
+) :
     RecyclerView.Adapter<PaymentOptionAdapter.PaymentOptionViewHolder>() {
 
     lateinit var callback: OnPaymentOptionSelected
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentOptionViewHolder {
-        return PaymentOptionViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.item_payment_option,
-                parent,
-                false
-            )
-        )
+        when (themeMode) {
+            ThemeOptions.LIGHT -> {
+                val contextWrapper = ContextThemeWrapper(parent.context, R.style.Theme_App_Light)
+
+                return PaymentOptionViewHolder(
+                    LayoutInflater.from(context).cloneInContext(contextWrapper).inflate(
+                        R.layout.item_payment_option,
+                        parent,
+                        false
+                    )
+                )
+            }
+            ThemeOptions.NIGHT -> {
+                val contextWrapper = ContextThemeWrapper(parent.context, R.style.Theme_App_Dark)
+
+                return PaymentOptionViewHolder(
+                    LayoutInflater.from(context).cloneInContext(contextWrapper).inflate(
+                        R.layout.item_payment_option,
+                        parent,
+                        false
+                    )
+                )
+            }
+        }
+
     }
 
     override fun getItemCount(): Int = items.size

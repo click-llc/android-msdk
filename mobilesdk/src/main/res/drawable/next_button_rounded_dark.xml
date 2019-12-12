@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/next_button_rounded_pressed_dark" android:state_pressed="true"/>
+    <item android:drawable="@drawable/next_button_rounded_pressed_dark" android:state_enabled="true"
+          android:state_focused="true"/>
+    <item android:drawable="@drawable/next_button_rounded_pressed_dark" android:state_activated="true"/>
+    <item android:drawable="@drawable/next_button_rounded_enabled_dark" android:state_enabled="true"/>
+    <item android:drawable="@drawable/next_button_rounded_disabled_dark"/>
+</selector>

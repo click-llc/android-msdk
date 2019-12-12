@@ -22,7 +22,7 @@
     </style>
 
     <style name="cl_ProgressBar" parent="Widget.AppCompat.ProgressBar">
-        <item name="colorAccent">@color/colorAccentSdk</item>
+        <item name="colorAccent">?attr/colorAccentSdk</item>
     </style>
 
     <style name="cl_MainDialogSheetStyle" parent="Widget.Design.BottomSheet.Modal">
@@ -37,6 +37,39 @@
     <style name="AppModalStyle"
            parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/sheet_background</item>
+    </style>
+
+    <style name="cl_MainDialogThemeDark" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="colorPrimary">@color/colorPrimarySdkDark</item>
+        <item name="colorAccent">@color/colorAccentSdkDark</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+
+        <item name="bottomSheetStyle">@style/cl_MainDialogSheetStyleDark</item>
+        <item name="android:windowIsFloating">false</item>
+
+    </style>
+
+    <style name="cl_FullscreenDialogThemeDark" parent="android:Theme.Light.NoTitleBar">
+        <item name="colorPrimary">@color/colorPrimarySdkDark</item>
+        <item name="colorAccent">@color/colorAccentSdkDark</item>
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:windowBackground">@color/cl_backgroundDark</item>
+    </style>
+
+    <style name="cl_MainDialogSheetStyleDark" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/dialog_background_dark</item>
+    </style>
+
+    <style name="AppBottomSheetDialogThemeDark"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyleDark</item>
+    </style>
+
+    <style name="AppModalStyleDark"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/sheet_background_dark</item>
     </style>
 
 </resources>

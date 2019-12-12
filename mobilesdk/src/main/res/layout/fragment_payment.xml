@@ -21,14 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/colorMainText"
+                android:textColor="?attr/colorMainText"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorSecondaryText"
+                android:textColor="?attr/colorSecondaryText"
                 android:textSize="14sp" />
 
             <View
@@ -36,7 +36,7 @@
                 android:layout_height="2px"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="#e4e4e4" />
+                android:background="#27000000" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -46,9 +46,9 @@
                     android:id="@+id/pbLoading"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:theme="@style/cl_ProgressBar"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="16dp"
+                    android:theme="@style/cl_ProgressBar"
                     android:visibility="invisible" />
 
                 <LinearLayout
@@ -88,7 +88,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/invoicing"
-                                android:textColor="@color/colorMainText"
+                                android:textColor="?attr/colorMainText"
                                 android:textSize="14sp" />
 
                             <TextView
@@ -97,7 +97,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:text="@string/sms_confirmation"
-                                android:textColor="@color/colorSecondaryText"
+                                android:textColor="?attr/colorSecondaryText"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -108,7 +108,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/change"
-                            android:textColor="@color/colorPrimaryAccent"
+                            android:textColor="?attr/colorPrimaryAccent"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -133,7 +133,7 @@
                                 android:background="@android:color/transparent"
                                 android:lines="1"
                                 android:text="+998"
-                                android:textColor="@color/colorMainText"
+                                android:textColor="?attr/colorMainText"
                                 android:textSize="18dp" />
 
                             <EditText
@@ -146,15 +146,15 @@
                                 android:inputType="number"
                                 android:lines="1"
                                 android:maxLength="17"
-                                android:textColor="@color/colorMainText"
+                                android:textColor="?attr/colorMainText"
+                                android:textColorHint="?attr/colorSecondaryText"
                                 android:textSize="18sp" />
                         </LinearLayout>
 
                         <View
                             android:id="@+id/viewMobileNumberUnderline"
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@drawable/underline_background" />
+                            android:layout_height="1dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -167,17 +167,21 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <EditText
                                 android:id="@+id/etCardNumber"
                                 android:layout_width="0dp"
                                 android:layout_height="40dp"
                                 android:layout_weight="1"
+                                android:background="@android:color/transparent"
                                 android:hint="8600 1400 8800 7212"
                                 android:inputType="number"
+                                android:lines="1"
                                 android:maxLength="19"
-                                android:textColor="@color/colorMainText"
+                                android:textColor="?attr/colorMainText"
+                                android:textColorHint="?attr/colorSecondaryText"
                                 android:textSize="18sp" />
 
                             <ImageView
@@ -186,21 +190,33 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginRight="8dp"
-                                android:src="@drawable/ic_card" />
+                                android:src="@drawable/ic_card"
+                                android:tint="?attr/colorPrimarySdk" />
 
                         </LinearLayout>
 
+                        <View
+                            android:id="@+id/viewCardNumberUnderline"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
 
                         <EditText
                             android:id="@+id/etCardDate"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
+                            android:background="@android:color/transparent"
                             android:hint="09/20"
                             android:imeOptions="actionDone"
                             android:inputType="number"
                             android:maxLength="5"
-                            android:textColor="@color/colorMainText"
+                            android:textColor="?attr/colorMainText"
+                            android:textColorHint="?attr/colorSecondaryText"
                             android:textSize="18sp" />
+
+                        <View
+                            android:id="@+id/viewCardDateUnderline"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
 
                     </LinearLayout>
 
@@ -217,7 +233,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/payment"
-                            android:textColor="@color/colorSecondaryText"
+                            android:textColor="?attr/colorSecondaryText"
                             android:textSize="18sp" />
 
 
@@ -229,7 +245,7 @@
                             android:layout_weight="1"
                             android:gravity="right"
                             android:text="12,000"
-                            android:textColor="@color/colorMainText"
+                            android:textColor="?attr/colorMainText"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -241,7 +257,7 @@
                             android:layout_marginLeft="8dp"
                             android:gravity="right"
                             android:text="@string/abbr"
-                            android:textColor="@color/colorMainText"
+                            android:textColor="?attr/colorMainText"
                             android:textSize="18sp" />
 
                     </LinearLayout>
@@ -251,7 +267,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textColor="@color/colorError"
+                        android:textColor="?attr/colorErrorTheme"
                         android:textSize="14sp"
                         android:visibility="gone" />
 
@@ -259,8 +275,7 @@
                         android:id="@+id/btnNext"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/next_button_rounded">
+                        android:layout_marginTop="8dp">
 
                         <TextView
                             android:id="@+id/tvNext"
@@ -303,7 +318,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/connection_problem"
                 android:textAlignment="center"
-                android:textColor="@color/colorSecondaryText"
+                android:textColor="?attr/colorSecondaryText"
                 android:textSize="16sp" />
 
 
@@ -313,7 +328,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/retry"
-                android:textColor="@color/colorPrimaryAccent"
+                android:textColor="?attr/colorPrimaryAccent"
                 android:textSize="16sp" />
 
 

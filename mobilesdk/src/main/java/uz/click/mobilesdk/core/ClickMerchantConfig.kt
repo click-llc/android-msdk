@@ -2,6 +2,7 @@ package uz.click.mobilesdk.core
 
 import uz.click.mobilesdk.core.errors.*
 import uz.click.mobilesdk.impl.paymentoptions.PaymentOptionEnum
+import uz.click.mobilesdk.impl.paymentoptions.ThemeOptions
 import java.io.Serializable
 
 /**
@@ -18,7 +19,8 @@ data class ClickMerchantConfig(
     var productName: String,
     var productDescription: String,
     var locale: String,
-    var paymentOption: PaymentOptionEnum = PaymentOptionEnum.USSD
+    var paymentOption: PaymentOptionEnum = PaymentOptionEnum.USSD,
+    var themeMode:ThemeOptions = ThemeOptions.LIGHT
 ) : Serializable {
     class Builder {
         private var serviceId: Long? = null
@@ -32,6 +34,7 @@ data class ClickMerchantConfig(
         private var productDescription: String = ""
         private var requestId: String = ""
         private var option: PaymentOptionEnum = PaymentOptionEnum.USSD
+        private var themeMode:ThemeOptions = ThemeOptions.LIGHT
 
         fun amount(amount: Double) = apply { this.amount = amount }
         fun serviceId(serviceId: Long) = apply { this.serviceId = serviceId }
@@ -44,6 +47,7 @@ data class ClickMerchantConfig(
         fun productDescription(productDescription: String) = apply { this.productDescription = productDescription }
         fun locale(locale: String) = apply { this.locale = locale }
         fun option(option: PaymentOptionEnum) = apply { this.option = option }
+        fun theme(themeMode:ThemeOptions) = apply { this.themeMode=themeMode }
         fun build(): ClickMerchantConfig {
             return ClickMerchantConfig(
                 serviceId ?: throw ServiceIdEmptyException(),
@@ -56,7 +60,8 @@ data class ClickMerchantConfig(
                 productName,
                 productDescription,
                 locale ?: throw LocaleEmptyException(),
-                option
+                option,
+                themeMode
             )
         }
     }

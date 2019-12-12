@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.App" parent="Theme.AppCompat.Light.DarkActionBar" />
+
+    <style name="Theme.App.Light" parent="Base.Theme.App">
+        <item name="colorPrimarySdk">@color/colorPrimarySdk</item>
+        <item name="colorPrimaryDarkSdk">?attr/colorPrimaryDarkSdk</item>
+        <item name="colorAccentSdk">@color/colorAccentSdk</item>
+        <item name="cl_background">@color/cl_background</item>
+        <item name="colorPrimaryAccent">@color/colorPrimaryAccent</item>
+        <item name="colorErrorTheme">@color/colorError</item>
+        <item name="colorMainText">@color/colorMainText</item>
+        <item name="colorSecondaryText">@color/colorSecondaryText</item>
+        <item name="colorSheetBackground">@color/colorSheetBackground</item>
+        <item name="colorButtonDisabled">@color/colorButtonDisabled</item>
+        <item name="colorButtonEnabled">@color/colorButtonEnabled</item>
+        <item name="colorButtonPressed">@color/colorButtonPressed</item>
+        <item name="colorNextIcon">@color/colorNextIcon</item>
+
+    </style>
+
+    <style name="Theme.App.Dark" parent="Base.Theme.App">
+        <item name="colorPrimarySdk">@color/colorPrimarySdkDark</item>
+        <item name="colorPrimaryDarkSdk">@color/colorPrimaryDarkSdkDark</item>
+        <item name="colorAccentSdk">@color/colorAccentSdkDark</item>
+        <item name="cl_background">@color/cl_backgroundDark</item>
+        <item name="colorPrimaryAccent">@color/colorPrimaryAccentDark</item>
+        <item name="colorErrorTheme">@color/colorErrorThemeDark</item>
+        <item name="colorMainText">@color/colorMainTextDark</item>
+        <item name="colorSecondaryText">@color/colorSecondaryTextDark</item>
+        <item name="colorSheetBackground">@color/colorSheetBackgroundDark</item>
+        <item name="colorButtonDisabled">@color/colorButtonDisabledDark</item>
+        <item name="colorButtonEnabled">@color/colorButtonEnabledDark</item>
+        <item name="colorButtonPressed">@color/colorButtonPressedDark</item>
+        <item name="colorNextIcon">@color/colorNextIconDark</item>
+
+    </style>
+
+</resources>

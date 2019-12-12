@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/confirm_with_sms"
-                android:textColor="@color/colorMainText"
+                android:textColor="?attr/colorMainText"
                 android:textSize="18sp" />
 
             <TextView
@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sms_code_sent"
-                android:textColor="@color/colorSecondaryText"
+                android:textColor="?attr/colorSecondaryText"
                 android:textSize="14sp" />
 
             <View
@@ -39,7 +39,7 @@
                 android:layout_height="2px"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="#e4e4e4" />
+                android:background="#27000000" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -58,28 +58,43 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/owner_mobile_number"
-                        android:textColor="@color/colorMainText"
+                        android:textColor="?attr/colorMainText"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tvMobileNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorMainText"
+                        android:textColor="?attr/colorMainText"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/etCode"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:hint="@string/sms_code"
-                        android:imeOptions="actionDone"
-                        android:inputType="number"
-                        android:maxLength="5"
-                        android:textColor="@color/colorMainText"
-                        android:textSize="18sp" />
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical">
+
+
+                        <EditText
+                            android:id="@+id/etCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/sms_code"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:textColor="?attr/colorMainText"
+                            android:textColorHint="?attr/colorSecondaryText"
+                            android:textSize="18sp" />
+
+                        <View
+                            android:id="@+id/viewMobileNumberUnderline"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvError"
@@ -87,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:gravity="center"
-                        android:textColor="@color/colorError"
+                        android:textColor="?attr/colorErrorTheme"
                         android:textSize="14sp"
                         android:visibility="gone" />
 
@@ -96,8 +111,7 @@
                         android:id="@+id/btnNext"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/next_button_rounded">
+                        android:layout_marginTop="8dp">
 
                         <TextView
                             android:id="@+id/tvNext"

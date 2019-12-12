@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:text="@string/payment_types"
             android:layout_gravity="center"
-            android:textColor="@color/colorMainText"
+            android:textColor="?attr/colorMainText"
             android:textSize="18sp" />
 
         <ImageView

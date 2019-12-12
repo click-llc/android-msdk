@@ -7,6 +7,7 @@ import uz.click.mobilesdk.core.ClickMerchant
 import uz.click.mobilesdk.core.ClickMerchantConfig
 import uz.click.mobilesdk.core.callbacks.ClickMerchantListener
 import uz.click.mobilesdk.impl.paymentoptions.PaymentOptionEnum
+import uz.click.mobilesdk.impl.paymentoptions.ThemeOptions
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                 .amount(productPrice)
                 .locale("RU")
                 .option(PaymentOptionEnum.USSD)
+                .theme(ThemeOptions.NIGHT)
                 .productName(productName)
                 .productDescription(productDescription)
                 .merchantUserId(BuildConfig.MERCHANT_USER_ID)
