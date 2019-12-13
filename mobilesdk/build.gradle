@@ -53,10 +53,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:28.0.0"
-    implementation "com.android.support:design:28.0.0"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
     implementation "com.squareup.okhttp3:okhttp:3.12.0"
     implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
     implementation "com.wang.avi:library:2.1.3"

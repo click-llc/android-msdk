@@ -1,7 +1,7 @@
 package uz.click.mobilesdk.core
 
-import android.support.annotation.Keep
-import android.support.v4.app.FragmentManager
+import androidx.annotation.Keep
+import androidx.fragment.app.FragmentManager
 import uz.click.mobilesdk.core.callbacks.ClickMerchantListener
 import uz.click.mobilesdk.impl.MainDialogFragment
 
@@ -11,10 +11,10 @@ import uz.click.mobilesdk.impl.MainDialogFragment
 object ClickMerchant {
 
     private val TAG_BOTTOM_SHEET = MainDialogFragment::class.java.name
-    private lateinit var supportFragmentManager: FragmentManager
+    private lateinit var supportFragmentManager: androidx.fragment.app.FragmentManager
 
     @[JvmStatic Keep]
-    fun init(supportFragmentManager: FragmentManager, config: ClickMerchantConfig, listener: ClickMerchantListener) {
+    fun init(supportFragmentManager: androidx.fragment.app.FragmentManager, config: ClickMerchantConfig, listener: ClickMerchantListener) {
         this.supportFragmentManager = supportFragmentManager
         if (findDialog(supportFragmentManager) == null) {
             val dialog = MainDialogFragment.newInstance(config)
@@ -23,6 +23,6 @@ object ClickMerchant {
         }
     }
 
-    private fun findDialog(supportFragmentManager: FragmentManager) =
+    private fun findDialog(supportFragmentManager: androidx.fragment.app.FragmentManager) =
         supportFragmentManager.findFragmentByTag(TAG_BOTTOM_SHEET) as MainDialogFragment?
 }

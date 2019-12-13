@@ -18,10 +18,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tv" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#3F3F3F"
+        android:background="@color/backgroundMain"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -31,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +40,6 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
-            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/good_name" />
@@ -72,7 +70,6 @@
             android:layout_marginStart="6dp"
             android:layout_marginLeft="6dp"
             android:text="5"
-            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/stars"
             app:layout_constraintStart_toEndOf="@+id/stars"
             app:layout_constraintTop_toBottomOf="@+id/good_description"
@@ -86,11 +83,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Цена"
-            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stars" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/vertical_middle"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -116,16 +112,14 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="1000"
-                android:textColor="#FFFFFF" />
+                android:text="1000" />
 
             <TextView
                 android:id="@+id/price_postfix"
                 style="@style/MainPriceValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="сум"
-                android:textColor="#FFFFFF" />
+                android:text="сум" />
 
         </LinearLayout>
 
@@ -137,6 +131,6 @@
             android:text="Купить"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

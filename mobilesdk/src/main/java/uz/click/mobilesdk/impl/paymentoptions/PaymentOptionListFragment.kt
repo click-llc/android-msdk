@@ -1,9 +1,9 @@
 package uz.click.mobilesdk.impl.paymentoptions
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatDialogFragment
-import android.support.v7.view.ContextThemeWrapper
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -97,7 +97,7 @@ class PaymentOptionListFragment : AppCompatDialogFragment() {
                 }
             }
 
-            rvPaymentTypes.layoutManager = LinearLayoutManager(context)
+            rvPaymentTypes.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             rvPaymentTypes.adapter = adapter
         } else throw ArgumentEmptyException()
     }

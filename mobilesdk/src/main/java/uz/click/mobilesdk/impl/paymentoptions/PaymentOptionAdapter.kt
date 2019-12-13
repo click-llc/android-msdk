@@ -1,9 +1,9 @@
 package uz.click.mobilesdk.impl.paymentoptions
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
-import android.support.v7.view.ContextThemeWrapper
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +20,7 @@ class PaymentOptionAdapter(
     val themeMode: ThemeOptions = ThemeOptions.LIGHT,
     val items: ArrayList<PaymentOption>
 ) :
-    RecyclerView.Adapter<PaymentOptionAdapter.PaymentOptionViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<PaymentOptionAdapter.PaymentOptionViewHolder>() {
 
     lateinit var callback: OnPaymentOptionSelected
 
@@ -66,7 +66,7 @@ class PaymentOptionAdapter(
         }
     }
 
-    class PaymentOptionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class PaymentOptionViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.ivOptionImage
         val title: TextView = itemView.tvOptionTitle
         val subtitle: TextView = itemView.tvOptionSubtitle

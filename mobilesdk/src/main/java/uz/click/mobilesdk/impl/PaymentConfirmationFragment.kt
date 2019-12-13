@@ -2,8 +2,8 @@ package uz.click.mobilesdk.impl
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatDialogFragment
-import android.support.v7.view.ContextThemeWrapper
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.appcompat.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

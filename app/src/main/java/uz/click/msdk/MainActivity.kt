@@ -1,7 +1,9 @@
 package uz.click.msdk
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.main_activity.*
 import uz.click.mobilesdk.core.ClickMerchant
 import uz.click.mobilesdk.core.ClickMerchantConfig
@@ -14,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private val productPrice = 1000.0
     private val productName = "Супер ТВ"
     private val productDescription = "Подписка на сервис Супер ТВ"
+    private lateinit var themeMode: ThemeOptions
 
     //fake in-memory user
     private val currentUser = UserDetail(0, "", null, false)
@@ -26,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         good_name.text = productName
         good_description.text = productDescription
 
+        checkDarkThemeMode(this)
+
         btnBuy.setOnClickListener {
             val config = ClickMerchantConfig.Builder()
                 .serviceId(BuildConfig.SERVICE_ID)
@@ -33,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 .amount(productPrice)
                 .locale("RU")
                 .option(PaymentOptionEnum.USSD)
-                .theme(ThemeOptions.NIGHT)
+                .theme(themeMode)
                 .productName(productName)
                 .productDescription(productDescription)
                 .merchantUserId(BuildConfig.MERCHANT_USER_ID)
@@ -63,5 +68,20 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+    }
+
+    private fun checkDarkThemeMode(context: Context) {
+        val mode = context.resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK)
+        when (mode) {
+            Configuration.UI_MODE_NIGHT_NO -> {
+                themeMode = ThemeOptions.LIGHT
+            }
+            Configuration.UI_MODE_NIGHT_YES -> {
+                themeMode = ThemeOptions.NIGHT
+            }
+            Configuration.UI_MODE_NIGHT_UNDEFINED -> {
+                themeMode = ThemeOptions.LIGHT
+            }
+        }
     }
 }

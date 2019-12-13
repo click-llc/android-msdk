@@ -1,12 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
 
     <style name="AppTheme.Gray.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@android:color/transparent</item>
@@ -14,15 +15,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
     <style name="ButtonCyan">
         <item name="android:fontFamily" tools:ignore="NewApi">sans-serif</item>
         <item name="android:gravity">center</item>
         <item name="android:lineSpacingExtra">5sp</item>
-        <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textColor</item>
         <item name="android:textStyle">bold</item>
     </style>
-
     <style name="MainPriceValue">
         <item name="android:lineSpacingExtra">3sp</item>
         <item name="android:textSize">20sp</item>
