@@ -205,9 +205,9 @@ class PaymentConfirmationFragment : AppCompatDialogFragment() {
 
     private fun hideLoading() {
         activity?.runOnUiThread {
-            pbLoading.hide()
-            llContainer.show()
-            tvError.hide()
+            pbLoading?.hide()
+            llContainer?.show()
+            tvError?.hide()
         }
     }
 }
