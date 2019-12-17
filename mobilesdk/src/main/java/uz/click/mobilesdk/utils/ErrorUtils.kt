@@ -61,6 +61,14 @@ object ErrorUtils {
             is NumberOfAttemptsException -> {
                 LanguageUtils.getLocaleStringResource(locale, R.string.number_of_attempts_error, context)
             }
+            is ServiceUnavailableForPaymentException -> {
+                LanguageUtils.getLocaleStringResource(locale, R.string.service_unavailable_error, context)
+            }
+            is UnknownErrorException -> {
+                if (e.msg != null)
+                    e.msg!!
+                else LanguageUtils.getLocaleStringResource(locale, R.string.unknown_error, context)
+            }
             else -> {
                 LanguageUtils.getLocaleStringResource(locale, R.string.unknown_error, context)
             }
@@ -77,6 +85,9 @@ object ErrorUtils {
             }
             7 -> {
                 MaximalAmountRangeException(code, message)
+            }
+            -21 -> {
+                ServiceUnavailableForPaymentException(code, message)
             }
             -302 -> {
                 InvalidConfirmationCodeException(code, message)
