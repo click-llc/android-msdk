@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=1.0.1) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/1.0.1/link)
+[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=1.1.1) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/1.1.1/link)
 
 # Click Mobile SDK 
 
@@ -57,16 +57,23 @@ dependencies {
             .merchantId(12345)
             .amount(50000.0)
             .locale("UZ")
+            .theme(ThemeOptions.LIGHT) //ThemeOptions.NIGHT
             .option(PaymentOptionEnum.USSD)
             .productName("Название продкута или услуги")
             .productDescription("Описание продукта или услуги")
             .merchantUserId(12345)
             .build()
 ```
+Можно включить HttpLoggingInterceptor
+```java
+   ClickMerchantManager.logs = BuildConfig.DEBUG
+
+```
+
 Для того, чтобы вызвать диалог оплаты с помощью CLICK, надо использовать следующий метод:
 
 ```java
-ClickMerchant.init(supportFragmentManager, config,
+    ClickMerchant.init(supportFragmentManager, config,
             new ClickMerchantListener {
                 @Override
                 void onRequestIdGet(String requestId) {
@@ -103,6 +110,9 @@ ClickMerchant.init(supportFragmentManager, config,
 Примеры использования:
 
 <img src="/screens/1.png" width="15%"> <img src="/screens/2.png" width="15%"> <img src="/screens/3.png" width="15%"> <img src="/screens/4.png" width="15%"> <img src="/screens/5.png" width="15%">
+
+<img src="/screens/1_dark.png" width="15%"> <img src="/screens/2_dark.png" width="15%"> <img src="/screens/3_dark.png" width="15%"> <img src="/screens/4_dark.png" width="15%"> <img src="/screens/5_dark.png" width="15%">
+
 
 ### Документация Click Merchant Manager
 
