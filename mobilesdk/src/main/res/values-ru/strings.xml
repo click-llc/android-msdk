@@ -40,7 +40,7 @@
     <string name="unknown_error">Неизвестная ошибка</string>
     <string name="network_connection_error">Не удалось подключиться к интернету</string>
     <string name="card_number_error">Неверный номер карты или смс услуга не подключена</string>
-    <string name="payment_failed">Счет отлонен</string>
+    <string name="payment_failed">Счет отклонен</string>
     <string name="payment_success">Успешно подтвержден</string>
     <string name="max_amount_error">Вы превысили максимальный лимит оплаты в день</string>
     <string name="confirmation_code_error">Неверный смс код</string>
