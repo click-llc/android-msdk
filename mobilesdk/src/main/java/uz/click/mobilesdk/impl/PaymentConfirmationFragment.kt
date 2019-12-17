@@ -155,7 +155,7 @@ class PaymentConfirmationFragment : AppCompatDialogFragment() {
 
                     override fun onSuccess(response: ConfirmPaymentByCardResponse) {
                         hideLoading()
-                        (parentFragment as MainDialogFragment).openPaymentResultPage(
+                        (parentFragment as? MainDialogFragment)?.openPaymentResultPage(
                             PaymentResponse(
                                 response.paymentStatusNote,
                                 response.paymentId,

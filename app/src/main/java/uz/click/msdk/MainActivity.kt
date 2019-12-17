@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.main_activity.*
 import uz.click.mobilesdk.core.ClickMerchant
 import uz.click.mobilesdk.core.ClickMerchantConfig
+import uz.click.mobilesdk.core.ClickMerchantManager
 import uz.click.mobilesdk.core.callbacks.ClickMerchantListener
 import uz.click.mobilesdk.impl.paymentoptions.PaymentOptionEnum
 import uz.click.mobilesdk.impl.paymentoptions.ThemeOptions
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
                 .merchantUserId(BuildConfig.MERCHANT_USER_ID)
                 .requestId(currentUser.requestId)
                 .build()
+
+            ClickMerchantManager.logs = BuildConfig.DEBUG
 
             ClickMerchant.init(
                 supportFragmentManager, config,

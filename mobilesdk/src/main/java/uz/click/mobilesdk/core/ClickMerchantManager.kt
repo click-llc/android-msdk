@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit
 class ClickMerchantManager {
 
     companion object {
+        var logs = false
         private const val CONNECT_TIME_OUT: Long = 10 * 1000 // 10 second
         private const val READ_TIME_OUT: Long = 10 * 1000 // 10 second
         private const val WRITE_TIME_OUT: Long = 10 * 1000 // 10 second
@@ -51,7 +52,7 @@ class ClickMerchantManager {
 
     private fun loggingInterceptor(): Interceptor {
         val logging = HttpLoggingInterceptor()
-        if (BuildConfig.DEBUG)
+        if (logs)
             logging.level = HttpLoggingInterceptor.Level.BODY
         else
             logging.level = HttpLoggingInterceptor.Level.NONE

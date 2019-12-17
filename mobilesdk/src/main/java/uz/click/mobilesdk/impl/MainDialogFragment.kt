@@ -1,6 +1,7 @@
 package uz.click.mobilesdk.impl
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -48,6 +49,10 @@ class MainDialogFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if(savedInstanceState!=null){
+            dismiss()
+            return
+        }
         if (arguments == null) throw ArgumentEmptyException()
         config = arguments!!.getSerializable(CLICK_MERCHANT_CONFIG) as ClickMerchantConfig
         when (config.themeMode) {
