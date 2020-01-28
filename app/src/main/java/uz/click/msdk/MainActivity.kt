@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 .serviceId(BuildConfig.SERVICE_ID)
                 .merchantId(BuildConfig.MERCHANT_ID)
                 .amount(productPrice)
+//                .transactionParam("order_id_in_your_server ")
                 .locale("RU")
                 .option(PaymentOptionEnum.USSD)
                 .theme(themeMode)
