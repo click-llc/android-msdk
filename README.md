@@ -56,6 +56,7 @@ dependencies {
             .serviceId(12345)
             .merchantId(12345)
             .amount(50000.0)
+//            .transactionParam("order_id_in_your_server ")
             .locale("UZ")
             .theme(ThemeOptions.LIGHT) //ThemeOptions.NIGHT
             .option(PaymentOptionEnum.USSD)
