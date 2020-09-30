@@ -2,6 +2,8 @@
 <resources>
     <string name="invoicing">Выставление счета</string>
     <string name="bank_card">Банковская карта</string>
+    <string name="click_evo_app">Через Приложения</string>
+    <string name="click_evo_app_description">Вы подтверждаете оплату с помощью карты</string>
     <string name="sms_confirmation">На ваш номер в системе CLICK будет выставлен счет</string>
     <string name="card_props">Введите реквизиты карты</string>
     <string name="confirm_with_sms">Подтвердите СМС кодом</string>

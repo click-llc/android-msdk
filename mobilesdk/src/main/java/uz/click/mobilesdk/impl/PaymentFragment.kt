@@ -2,7 +2,9 @@ package uz.click.mobilesdk.impl
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -47,8 +49,11 @@ class PaymentFragment : AppCompatDialogFragment() {
     private lateinit var config: ClickMerchantConfig
     private var listener: ClickMerchantListener? = null
     var requestId: String = ""
-    private var mode = PaymentOptionEnum.USSD
+    private var mode = PaymentOptionEnum.CLICK_EVOLUTION
     private lateinit var locale: Locale
+    private val APP_NAME = "air.com.ssdsoftwaresolutions.clickuz"
+
+    var shouldInitRequestId = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,8 +126,18 @@ class PaymentFragment : AppCompatDialogFragment() {
             tvSubtitle.text = config.productDescription
             tvSum.text = config.amount.formatDecimals()
             requestId = config.requestId
-            mode = config.paymentOption
 
+            mode = if (config.paymentOption != PaymentOptionEnum.CLICK_EVOLUTION)
+                config.paymentOption
+            else {
+                var isClickEvolutionEnabled = false
+                if (!config.transactionParam.isNullOrEmpty()) {
+                    isClickEvolutionEnabled = appInstalledOrNot(APP_NAME)
+                }
+
+                if (isClickEvolutionEnabled) config.paymentOption
+                else PaymentOptionEnum.USSD
+            }
             locale = Locale(config.locale.toLowerCase())
 
             btnChange.text =
@@ -157,6 +172,11 @@ class PaymentFragment : AppCompatDialogFragment() {
                             R.string.card_props,
                             context!!
                         )
+
+                    if (shouldInitRequestId){
+                        init()
+                        shouldInitRequestId = false
+                    }
                 }
                 PaymentOptionEnum.USSD -> {
                     llBankCard.hide()
@@ -174,10 +194,36 @@ class PaymentFragment : AppCompatDialogFragment() {
                         R.string.sms_confirmation,
                         context!!
                     )
+
+                    if (shouldInitRequestId){
+                        init()
+                        shouldInitRequestId = false
+                    }
+                }
+                PaymentOptionEnum.CLICK_EVOLUTION -> {
+                    llBankCard.hide()
+                    llUssd.hide()
+
+                    ivPaymentType.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context!!,
+                            R.drawable.ic_aevo
+                        )
+                    )
+                    tvPaymentTypeTitle.text =
+                        LanguageUtils.getLocaleStringResource(
+                            locale,
+                            R.string.click_evo_app,
+                            context!!
+                        )
+                    tvPaymentTypeSubtitle.text = LanguageUtils.getLocaleStringResource(
+                        locale,
+                        R.string.click_evo_app_description,
+                        context!!
+                    )
                 }
             }
 
-            init()
         } else throw ArgumentEmptyException()
 
         tvRetry.setOnClickListener {
@@ -260,6 +306,16 @@ class PaymentFragment : AppCompatDialogFragment() {
                 }
             }
         }
+    }
+
+    private fun appInstalledOrNot(uri: String): Boolean {
+        val pm: PackageManager = requireContext().packageManager
+        try {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+        }
+        return false
     }
 
     override fun onRequestPermissionsResult(
@@ -443,6 +499,28 @@ class PaymentFragment : AppCompatDialogFragment() {
                         context!!
                     )
             }
+            PaymentOptionEnum.CLICK_EVOLUTION -> {
+                listener?.closeDialog()
+                if (config.transactionParam == null) return
+
+                val builder = Uri.Builder()
+                builder.scheme("https")
+                    .authority("my.click.uz")
+                    .appendPath("services")
+                    .appendPath("pay")
+                    .appendQueryParameter("service_id", "${config.serviceId}")
+                    .appendQueryParameter("merchant_id", "${config.merchantId}")
+                    .appendQueryParameter("amount", "${config.amount}")
+                    .appendQueryParameter("transaction_param", "${config.transactionParam}")
+
+                if (!config.returnUrl.isNullOrEmpty())
+                    builder.appendQueryParameter("return_url", "${config.returnUrl}")
+
+                val uri = builder.build()
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = uri
+                startActivity(i)
+            }
         }
     }
 
@@ -508,10 +586,22 @@ class PaymentFragment : AppCompatDialogFragment() {
             PaymentOptionEnum.BANK_CARD -> {
                 llBankCard.show()
                 llUssd.hide()
+                if (shouldInitRequestId){
+                    init()
+                    shouldInitRequestId = false
+                }
             }
             PaymentOptionEnum.USSD -> {
                 llBankCard.hide()
                 llUssd.show()
+                if (shouldInitRequestId){
+                    init()
+                    shouldInitRequestId = false
+                }
+            }
+            PaymentOptionEnum.CLICK_EVOLUTION -> {
+                llBankCard.hide()
+                llUssd.hide()
             }
         }
     }

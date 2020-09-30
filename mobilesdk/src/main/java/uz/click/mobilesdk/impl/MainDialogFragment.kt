@@ -1,13 +1,13 @@
 package uz.click.mobilesdk.impl
 
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
+import android.view.*
+import android.widget.FrameLayout
+import androidx.appcompat.view.ContextThemeWrapper
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import androidx.appcompat.view.ContextThemeWrapper
-import android.view.*
-import android.widget.FrameLayout
 import uz.click.mobilesdk.R
 import uz.click.mobilesdk.core.ClickMerchantConfig
 import uz.click.mobilesdk.core.callbacks.ClickMerchantListener
@@ -30,12 +30,14 @@ class MainDialogFragment : BottomSheetDialogFragment() {
     private var listener: ClickMerchantListener? = null
 
     companion object {
+        private const val APP_NAME = "air.com.ssdsoftwaresolutions.clickuz"
         const val CLICK_MERCHANT_CONFIG = "CLICK_MERCHANT_CONFIG"
         const val REQUEST_ID = "REQUEST_ID"
         const val PAYMENT_RESULT = "PAYMENT_RESULT"
         const val PAYMENT_AMOUNT = "PAYMENT_AMOUNT"
         const val LOCALE = "LOCALE"
         const val THEME_MODE = "THEME_MODE"
+        const val IS_CLICK_EVOLUTION_ENABLED = "IS_CLICK_EVOLUTION_ENABLED"
 
 
         fun newInstance(config: ClickMerchantConfig?): MainDialogFragment {
@@ -49,7 +51,7 @@ class MainDialogFragment : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(savedInstanceState!=null){
+        if (savedInstanceState != null) {
             dismiss()
             return
         }
@@ -160,6 +162,11 @@ class MainDialogFragment : BottomSheetDialogFragment() {
         val bundle = Bundle()
         bundle.putString(LOCALE, config.locale)
         bundle.putSerializable(THEME_MODE, config.themeMode)
+        var isClickEvolutionEnabled = false
+        if (!config.transactionParam.isNullOrEmpty()) {
+            isClickEvolutionEnabled = appInstalledOrNot(APP_NAME)
+        }
+        bundle.putBoolean(IS_CLICK_EVOLUTION_ENABLED, isClickEvolutionEnabled)
         val payment = PaymentOptionListFragment()
         payment.arguments = bundle
         transaction.add(
@@ -168,6 +175,16 @@ class MainDialogFragment : BottomSheetDialogFragment() {
         )
         transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    private fun appInstalledOrNot(uri: String): Boolean {
+        val pm: PackageManager = requireContext().packageManager
+        try {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+        }
+        return false
     }
 
     fun setScannedData(number: String, date: String) {

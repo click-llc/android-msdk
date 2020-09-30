@@ -8,4 +8,5 @@ interface ClickMerchantListener {
     fun onSuccess(paymentId: Long)
     fun onFailure()
     fun onInvoiceCancelled()
+    fun closeDialog()
 }

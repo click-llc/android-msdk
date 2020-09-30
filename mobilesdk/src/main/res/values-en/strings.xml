@@ -2,6 +2,8 @@
 <resources>
     <string name="invoicing">Invoicing</string>
     <string name="bank_card">Bank card</string>
+    <string name="click_evo_app">Via an Application</string>
+    <string name="click_evo_app_description">You confirm payment by card</string>
     <string name="sms_confirmation">Your number at CLICK system will be billed</string>
     <string name="card_props">Enter card details</string>
     <string name="confirm_with_sms">Confirm by SMS code</string>

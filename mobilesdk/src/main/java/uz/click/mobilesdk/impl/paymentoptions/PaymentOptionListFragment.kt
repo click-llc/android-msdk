@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_payment_option.*
 import uz.click.mobilesdk.R
 import uz.click.mobilesdk.core.errors.ArgumentEmptyException
 import uz.click.mobilesdk.impl.MainDialogFragment
+import uz.click.mobilesdk.impl.MainDialogFragment.Companion.IS_CLICK_EVOLUTION_ENABLED
 import uz.click.mobilesdk.impl.MainDialogFragment.Companion.LOCALE
 import uz.click.mobilesdk.impl.MainDialogFragment.Companion.THEME_MODE
 import uz.click.mobilesdk.utils.LanguageUtils
@@ -69,6 +70,28 @@ class PaymentOptionListFragment : AppCompatDialogFragment() {
             tvTitle.text =
                 LanguageUtils.getLocaleStringResource(locale, R.string.payment_types, context!!)
             val items = ArrayList<PaymentOption>()
+
+            val isClickEvolutionEnabled = arguments!!.getBoolean(IS_CLICK_EVOLUTION_ENABLED, false)
+
+            if (isClickEvolutionEnabled) {
+                items.add(
+                    PaymentOption(
+                        R.drawable.ic_aevo,
+                        LanguageUtils.getLocaleStringResource(
+                            locale,
+                            R.string.click_evo_app,
+                            context!!
+                        ),
+                        LanguageUtils.getLocaleStringResource(
+                            locale,
+                            R.string.click_evo_app_description,
+                            context!!
+                        ),
+                        PaymentOptionEnum.CLICK_EVOLUTION
+                    )
+                )
+            }
+
             items.add(
                 PaymentOption(
                     R.drawable.ic_880,

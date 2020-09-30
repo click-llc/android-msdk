@@ -37,9 +37,10 @@ class MainActivity : AppCompatActivity() {
                 .serviceId(BuildConfig.SERVICE_ID)
                 .merchantId(BuildConfig.MERCHANT_ID)
                 .amount(productPrice)
-//                .transactionParam("order_id_in_your_server ")
+//                .transactionParam("order_id_in_your_server")
+//                .returnUrl("your return url")
                 .locale("RU")
-                .option(PaymentOptionEnum.USSD)
+                .option(PaymentOptionEnum.CLICK_EVOLUTION)
                 .theme(themeMode)
                 .productName(productName)
                 .productDescription(productDescription)
@@ -67,6 +68,10 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onInvoiceCancelled() {
                         currentUser.requestId = ""
+                    }
+
+                    override fun closeDialog() {
+                        ClickMerchant.dismiss()
                     }
                 }
             )

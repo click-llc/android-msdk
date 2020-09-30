@@ -27,7 +27,7 @@
             android:layout_width="64dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:src="@drawable/click_logo_1" />
+            android:src="@drawable/ic_click_1" />
 
     </LinearLayout>
 

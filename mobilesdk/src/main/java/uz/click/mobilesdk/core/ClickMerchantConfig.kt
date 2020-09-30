@@ -15,11 +15,12 @@ data class ClickMerchantConfig(
     var requestId: String = "",
     var amount: Double,
     var transactionParam: String?,
+    var returnUrl: String?,
     var communalParam: String?,
     var productName: String,
     var productDescription: String,
     var locale: String,
-    var paymentOption: PaymentOptionEnum = PaymentOptionEnum.USSD,
+    var paymentOption: PaymentOptionEnum = PaymentOptionEnum.CLICK_EVOLUTION,
     var themeMode:ThemeOptions = ThemeOptions.LIGHT
 ) : Serializable {
     class Builder {
@@ -28,6 +29,7 @@ data class ClickMerchantConfig(
         private var merchantUserId: Long? = null
         private var amount: Double? = null
         private var transactionParam: String = ""
+        private var returnUrl: String = ""
         private var communalParam: String = ""
         private var locale: String? = null
         private var productName: String = ""
@@ -42,6 +44,7 @@ data class ClickMerchantConfig(
         fun merchantUserId(merchantUserId: Long) = apply { this.merchantUserId = merchantUserId }
         fun requestId(requestId: String) = apply { this.requestId = requestId }
         fun transactionParam(transactionParam: String) = apply { this.transactionParam = transactionParam }
+        fun returnUrl(returnUrl: String) = apply { this.returnUrl = returnUrl }
         fun communalParam(communalParam: String) = apply { this.communalParam = communalParam }
         fun productName(productName: String) = apply { this.productName = productName }
         fun productDescription(productDescription: String) = apply { this.productDescription = productDescription }
@@ -56,6 +59,7 @@ data class ClickMerchantConfig(
                 requestId,
                 amount ?: throw AmountEmptyException(),
                 transactionParam,
+                returnUrl,
                 communalParam,
                 productName,
                 productDescription,

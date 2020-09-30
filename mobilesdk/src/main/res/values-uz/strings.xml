@@ -2,6 +2,8 @@
 <resources>
     <string name="invoicing">Hisob qo\'yish</string>
     <string name="bank_card">Bank kartasi</string>
+    <string name="click_evo_app">Dastur orqali</string>
+    <string name="click_evo_app_description">Kartangizni tanlab to’lovni tasdiqlaysiz</string>
     <string name="sms_confirmation">Sizning CLICK tizimidagi raqamingizga hisob ochiladi</string>
     <string name="card_props">Bank kartasi ma\'lumotlarini kiriting</string>
     <string name="confirm_with_sms">SMS kod orqali tasdiqlang</string>

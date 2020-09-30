@@ -14,13 +14,22 @@ object ClickMerchant {
     private lateinit var supportFragmentManager: androidx.fragment.app.FragmentManager
 
     @[JvmStatic Keep]
-    fun init(supportFragmentManager: androidx.fragment.app.FragmentManager, config: ClickMerchantConfig, listener: ClickMerchantListener) {
+    fun init(
+        supportFragmentManager: androidx.fragment.app.FragmentManager,
+        config: ClickMerchantConfig,
+        listener: ClickMerchantListener
+    ) {
         this.supportFragmentManager = supportFragmentManager
         if (findDialog(supportFragmentManager) == null) {
             val dialog = MainDialogFragment.newInstance(config)
             dialog.setListener(listener)
             dialog.show(supportFragmentManager, TAG_BOTTOM_SHEET)
         }
+    }
+
+    @[JvmStatic Keep]
+    fun dismiss() {
+        findDialog(supportFragmentManager)?.dismiss()
     }
 
     private fun findDialog(supportFragmentManager: androidx.fragment.app.FragmentManager) =
