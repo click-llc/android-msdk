@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 //transaction param is optional (if you not have your billing system)
                 .transactionParam(transactionParam)
 //                .returnUrl("https://www.youtube.com/")
-                .locale("UZ")
+                .locale("RU")
                 .option(PaymentOptionEnum.CLICK_EVOLUTION)
                 .theme(themeMode)
                 .productName(productName)
