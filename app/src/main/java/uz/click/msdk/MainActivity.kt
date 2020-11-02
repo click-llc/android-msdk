@@ -15,6 +15,7 @@ import uz.click.mobilesdk.impl.paymentoptions.ThemeOptions
 class MainActivity : AppCompatActivity() {
 
     private val productPrice = 1000.0
+    private val transactionParam = "order_id_in_your_server"
     private val productName = "Супер ТВ"
     private val productDescription = "Подписка на сервис Супер ТВ"
     private lateinit var themeMode: ThemeOptions
@@ -37,8 +38,9 @@ class MainActivity : AppCompatActivity() {
                 .serviceId(BuildConfig.SERVICE_ID)
                 .merchantId(BuildConfig.MERCHANT_ID)
                 .amount(productPrice)
-//                .transactionParam("order_id_in_your_server")
-//                .returnUrl("your return url")
+                //transaction param is optional (if you not have your billing system)
+                .transactionParam(transactionParam)
+//                .returnUrl("https://www.youtube.com/")
                 .locale("RU")
                 .option(PaymentOptionEnum.CLICK_EVOLUTION)
                 .theme(themeMode)

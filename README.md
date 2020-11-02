@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=1.1.2) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/1.1.2/link)
+[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=1.2.1) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/1.2.1/link)
 
 # Click Mobile SDK 
 
@@ -56,7 +56,9 @@ dependencies {
             .serviceId(12345)
             .merchantId(12345)
             .amount(50000.0)
-//            .transactionParam("order_id_in_your_server ")
+	    //transaction param is optional (not set it, if you not have your billing system)
+            .transactionParam("order_id_in_your_server ")
+//                .returnUrl("https://www.youtube.com/")
             .locale("UZ")
             .theme(ThemeOptions.LIGHT) //ThemeOptions.NIGHT
             .option(PaymentOptionEnum.USSD)
