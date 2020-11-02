@@ -16,6 +16,8 @@ import com.google.android.gms.vision.text.TextBlock
 import com.google.android.gms.vision.text.TextRecognizer
 import kotlinx.android.synthetic.main.fragment_scan.*
 import uz.click.mobilesdk.R
+import uz.click.mobilesdk.core.errors.ArgumentEmptyException
+import uz.click.mobilesdk.impl.MainDialogFragment.Companion.THEME_MODE
 import uz.click.mobilesdk.impl.paymentoptions.ThemeOptions
 import uz.click.mobilesdk.utils.ValidationUtils
 import java.util.regex.Pattern
@@ -49,6 +51,9 @@ class ScanFragment : AppCompatDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (arguments == null) throw ArgumentEmptyException()
+
+        themeMode = arguments!!.getSerializable(THEME_MODE) as ThemeOptions
         when (themeMode) {
             ThemeOptions.LIGHT -> {
                 setStyle(STYLE_NO_FRAME, R.style.cl_FullscreenDialogTheme)
