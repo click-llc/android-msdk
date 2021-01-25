@@ -16,6 +16,8 @@ data class CheckoutResponse(
     var serviceName: String,
     @field:Json(name = "amount")
     var amount: Double,
+    @field:Json(name = "commission_percent")
+    var commissionPercent: Double?,
     @field:Json(name = "transaction_param")
     var transactionParam: String?,
     @field:Json(name = "communal_param")

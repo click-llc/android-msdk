@@ -173,7 +173,7 @@ class PaymentFragment : AppCompatDialogFragment() {
                             context!!
                         )
 
-                    if (shouldInitRequestId){
+                    if (shouldInitRequestId) {
                         init()
                         shouldInitRequestId = false
                     }
@@ -195,7 +195,7 @@ class PaymentFragment : AppCompatDialogFragment() {
                         context!!
                     )
 
-                    if (shouldInitRequestId){
+                    if (shouldInitRequestId) {
                         init()
                         shouldInitRequestId = false
                     }
@@ -221,6 +221,11 @@ class PaymentFragment : AppCompatDialogFragment() {
                         R.string.click_evo_app_description,
                         context!!
                     )
+
+                    if (shouldInitRequestId) {
+                        init()
+                        shouldInitRequestId = false
+                    }
                 }
             }
 
@@ -362,9 +367,10 @@ class PaymentFragment : AppCompatDialogFragment() {
                     }
 
                     override fun onSuccess(response: InitialResponse) {
-                        showResult()
                         requestId = response.requestId
                         listener?.onReceiveRequestId(requestId)
+                        if (requestId.isNotEmpty()) init()
+                        else showResult()
                     }
                 }
             )
@@ -379,6 +385,20 @@ class PaymentFragment : AppCompatDialogFragment() {
                     }
 
                     override fun onSuccess(response: CheckoutResponse) {
+
+                        activity?.runOnUiThread {
+                            tvSum.text = response.amount.formatDecimals()
+                            if (response.commissionPercent ?: 0.0 > 0.0) {
+                                tvCommissionPercent.text =
+                                    response.commissionPercent!!.formatDecimals()
+                                llCommission.show()
+                            } else {
+                                tvCommissionPercent.text = ""
+                                llCommission.hide()
+                            }
+                        }
+
+
                         if (response.payment.paymentStatusDescription != null) {
                             when (config.paymentOption) {
                                 PaymentOptionEnum.BANK_CARD -> {
@@ -586,7 +606,7 @@ class PaymentFragment : AppCompatDialogFragment() {
             PaymentOptionEnum.BANK_CARD -> {
                 llBankCard.show()
                 llUssd.hide()
-                if (shouldInitRequestId){
+                if (shouldInitRequestId) {
                     init()
                     shouldInitRequestId = false
                 }
@@ -594,7 +614,7 @@ class PaymentFragment : AppCompatDialogFragment() {
             PaymentOptionEnum.USSD -> {
                 llBankCard.hide()
                 llUssd.show()
-                if (shouldInitRequestId){
+                if (shouldInitRequestId) {
                     init()
                     shouldInitRequestId = false
                 }

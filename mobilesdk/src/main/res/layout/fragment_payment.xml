@@ -262,6 +262,48 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/llCommission"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+
+                        <TextView
+                            android:id="@+id/tvCommission"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/commission"
+                            android:textColor="?attr/colorSecondaryText"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvCommissionPercent"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="12,000"
+                            android:textColor="?attr/colorMainText"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="right"
+                            android:text="%"
+                            android:textColor="?attr/colorMainText"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
                     <TextView
                         android:id="@+id/tvError"
                         android:layout_width="match_parent"
