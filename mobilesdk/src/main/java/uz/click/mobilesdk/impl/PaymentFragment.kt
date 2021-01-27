@@ -144,6 +144,10 @@ class PaymentFragment : AppCompatDialogFragment() {
                 LanguageUtils.getLocaleStringResource(locale, R.string.change, context!!)
             tvToPay.text =
                 LanguageUtils.getLocaleStringResource(locale, R.string.payment, context!!)
+            tvCommission.text =
+                LanguageUtils.getLocaleStringResource(locale, R.string.commission, context!!)
+            tvAbbrCommision.text =
+                LanguageUtils.getLocaleStringResource(locale, R.string.abbr, context!!)
             tvNext.text = LanguageUtils.getLocaleStringResource(locale, R.string.next, context!!)
             tvAbbr.text = LanguageUtils.getLocaleStringResource(locale, R.string.abbr, context!!)
             tvRetry.text = LanguageUtils.getLocaleStringResource(locale, R.string.retry, context!!)
@@ -389,8 +393,10 @@ class PaymentFragment : AppCompatDialogFragment() {
                         activity?.runOnUiThread {
                             tvSum.text = response.amount.formatDecimals()
                             if (response.commissionPercent ?: 0.0 > 0.0) {
-                                tvCommissionPercent.text =
-                                    response.commissionPercent!!.formatDecimals()
+                                val percent: Double = response.commissionPercent!!
+                                val commissionAmount: Double =
+                                    response.amount - response.amount / (1.0 + percent / 100.0)
+                                tvCommissionPercent.text = commissionAmount.formatDecimals()
                                 llCommission.show()
                             } else {
                                 tvCommissionPercent.text = ""

@@ -20,8 +20,10 @@
     <string name="click_app">CLICK ilovsi</string>
     <string name="enter_invoices_list">Выставленные счета bo\'limiga kiring</string>
     <string name="cancel">Bekor qilish</string>
+
     <string name="payment">To\'lov uchun</string>
-    <string name="commission">Komissiya</string>
+    <string name="commission">Sh.J. Komissiya (QQS bilan)</string>
+
     <string name="abbr">so\'m</string>
     <string name="paid">To\'landi</string>
     <string name="to_be_paid">To\'lo\'vga</string>

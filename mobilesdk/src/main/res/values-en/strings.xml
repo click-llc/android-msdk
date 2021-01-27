@@ -20,8 +20,10 @@
     <string name="click_app">CLICK application</string>
     <string name="enter_invoices_list">Go to the section "Invoiced"</string>
     <string name="cancel">Cancel</string>
+
     <string name="payment">To pay</string>
-    <string name="commission">Commission</string>
+    <string name="commission">Incl. commission (with VAT)</string>
+
     <string name="abbr">uzs</string>
     <string name="paid">Paid</string>
     <string name="to_be_paid">To be paid</string>

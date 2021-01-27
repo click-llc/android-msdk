@@ -20,8 +20,10 @@
     <string name="click_app">Приложение CLICK</string>
     <string name="enter_invoices_list">Зайдите в раздел Выставленные счета</string>
     <string name="cancel">Отмена</string>
+
     <string name="payment">К оплате</string>
-    <string name="commission">Комиссия</string>
+    <string name="commission">В т.ч, комиссия (с НДС)</string>
+
     <string name="abbr">сум</string>
     <string name="paid">Оплачено</string>
     <string name="to_be_paid">К оплате</string>
