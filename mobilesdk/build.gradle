@@ -75,7 +75,7 @@ afterEvaluate {
 
                 groupId = 'uz.click.mobilesdk'
                 artifactId = 'clickmsdk'
-                version = '1.3.0'
+                version = '1.3.3'
             }
         }
     }
