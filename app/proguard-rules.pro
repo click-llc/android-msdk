@@ -19,3 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the tv source file name.
 #-renamesourcefileattribute SourceFile
+-keep class uz.click.mobilesdk.** { *; }
+-dontwarn uz.click.mobilesdk.**

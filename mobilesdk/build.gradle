@@ -1,10 +1,10 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
     }
 }
 
@@ -12,15 +12,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
     }
@@ -68,29 +67,16 @@ dependencies {
     compileOnly 'io.reactivex.rxjava2:rxjava:2.2.3'
 }
 
-ext {
-    bintrayRepo = 'Click_Android_SDK'
-    bintrayName = 'click_android_msdk_uzbekistan'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
 
-    publishedGroupId = 'uz.click.mobilesdk'
-    libraryName = 'click_android_msdk_uzbekistan'
-    artifact = 'clickmsdk'
-
-    libraryDescription = 'This library allows you to embed payment acceptance using Click into Android mobile applications. For the library to function properly, the user must be connected to Click Merchant using the Shop API scheme'
-
-    siteUrl = 'https://click.uz/'
-    gitUrl = 'https://github.com/click-llc/android-msdk.git'
-
-    libraryVersion = '1.2.1'
-
-    developerId = 'untec'
-    developerName = 'rahmatkhujaevs'
-    developerEmail = 'eragon0911@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
+                groupId = 'uz.click.mobilesdk'
+                artifactId = 'clickmsdk'
+                version = '1.3.0'
+            }
+        }
+    }
 }
-
-apply from: 'scriptlib.gradle'
-
