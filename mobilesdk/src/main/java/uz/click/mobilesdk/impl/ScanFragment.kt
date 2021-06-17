@@ -85,20 +85,9 @@ class ScanFragment : AppCompatDialogFragment() {
                 .build()
 
             surfaceView.holder.addCallback(object : SurfaceHolder.Callback {
-                override fun surfaceChanged(
-                    holder: SurfaceHolder?,
-                    format: Int,
-                    width: Int,
-                    height: Int
-                ) {
 
-                }
 
-                override fun surfaceDestroyed(holder: SurfaceHolder?) {
-                    cameraSource?.stop()
-                }
-
-                override fun surfaceCreated(holder: SurfaceHolder?) {
+                override fun surfaceCreated(holder: SurfaceHolder) {
                     if (ActivityCompat.checkSelfPermission(
                             context!!,
                             Manifest.permission.CAMERA
@@ -114,6 +103,18 @@ class ScanFragment : AppCompatDialogFragment() {
                         return
                     }
                     cameraSource?.start(surfaceView.holder)
+                }
+
+                override fun surfaceChanged(
+                    holder: SurfaceHolder,
+                    format: Int,
+                    width: Int,
+                    height: Int
+                ) {
+                }
+
+                override fun surfaceDestroyed(holder: SurfaceHolder) {
+                    cameraSource?.stop()
                 }
 
             })
