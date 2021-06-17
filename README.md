@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/click-llc/android-msdk.svg)](https://jitpack.io/#click-llc/android-msdk)
 
 # Click Mobile SDK 
 
@@ -10,12 +11,27 @@
 * [Код демо-приложения, которое интегрирует Click Mobile SDK](https://github.com/click-llc/android-msdk/tree/master/app)
 
 ### Подключение через Gradle
-Для подключения библиотеки необходимо прописать зависимости в build.gradle модуля:
+Для подключения библиотеки необходимо прописать зависимости в модуле:
+
+root build.gradle:
+
+```groovy
+
+allprojects {
+		repositories {
+			//...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+```
+
+build.gradle:
 
 ```groovy
 
 dependencies {
-	implementation 'uz.click.mobilesdk:clickmsdk:1.2.4'
+	implementation 'uz.click.mobilesdk:clickmsdk:${last.version}'
 }
 
 ```
