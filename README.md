@@ -1,4 +1,3 @@
-[ ![Download](https://api.bintray.com/packages/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/images/download.svg?version=1.2.4) ](https://bintray.com/click-llc/Click_Android_SDK/click_android_msdk_uzbekistan/1.2.4/link)
 
 # Click Mobile SDK 
 
@@ -16,7 +15,7 @@
 ```groovy
 
 dependencies {
-	implementation 'uz.click.mobilesdk:clickmsdk:${last.version}'
+	implementation 'uz.click.mobilesdk:clickmsdk:1.2.4'
 }
 
 ```
