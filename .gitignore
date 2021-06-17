@@ -1,6 +1,5 @@
 *.iml
 .gradle
-/gradle
 /.idea/assetWizardSettings.xml
 /.idea/compiler.xml
 /.idea/codeStyles
