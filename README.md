@@ -31,7 +31,7 @@ build.gradle:
 ```groovy
 
 dependencies {
-	implementation 'uz.click.mobilesdk:clickmsdk:${last.version}'
+	implementation 'com.github.click-llc:android-msdk:${last.version}'
 }
 
 ```
